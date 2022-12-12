@@ -7,17 +7,17 @@
       :header-cell-class-name="headerBg"
       @selection-change="handleSelectionChange"
     >
-      <el-table-column type="selection" width="55"></el-table-column>
-      <el-table-column
-        prop="tag"
-        label="地址类型"
-        width="100"
-      ></el-table-column>
+      <el-table-column type="selection" width="35"></el-table-column>
+      <el-table-column label="地址类型" width="80"
+        ><template slot-scope="scope">
+          <el-tag>{{ scope.row.tag }}</el-tag>
+        </template></el-table-column
+      >
       <el-table-column prop="name" label="收货人" width="120"></el-table-column>
       <el-table-column prop="district" label="地址"></el-table-column>
       <el-table-column prop="address" label="详细地址"></el-table-column>
-      <el-table-column prop="phone" label="联系电话"></el-table-column>
-      <el-table-column align="center" label="默认地址">
+      <el-table-column prop="phone" label="联系电话" width="120"></el-table-column>
+      <el-table-column align="center" label="默认地址" width="120">
         <template slot-scope="scope">
           <el-switch
             v-model="scope.row.isDefault"
@@ -27,7 +27,6 @@
           />
         </template>
       </el-table-column>
-
       <el-table-column label="操作" width="250" align="center">
         <template slot-scope="scope">
           <el-button type="success" @click="handleEdit(scope.row)"
@@ -118,11 +117,11 @@
       >
         <el-row>
           <el-col :span="12">
-            <el-form-item label="收货人">
+            <el-form-item label="收货人" prop="name">
               <el-input v-model="form.name" autocomplete="off"> </el-input>
             </el-form-item> </el-col
           ><el-col :span="12"
-            ><el-form-item label="手机">
+            ><el-form-item label="手机" prop="phone">
               <el-input v-model="form.phone" autocomplete="off"></el-input>
             </el-form-item> </el-col
         ></el-row>
@@ -173,10 +172,10 @@
             ></el-col>
           </el-form-item> -->
         </el-row>
-        <el-form-item label="邮政编码">
+        <el-form-item label="邮政编码" prop="zip">
           <el-input v-model="form.zip" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="详细地址">
+        <el-form-item label="详细地址" prop="address">
           <el-input
             type="textarea"
             :rows="2"
@@ -254,16 +253,25 @@ export default {
           {
             min: 6,
             max: 10,
-            message: "长度在 6 到 10 个字符",
+            message: "长度在 6 到 8 个字符",
             trigger: "blur",
           },
         ],
         phone: [
           { required: true, message: "请输入电话", trigger: "blur" },
           {
-            min: 10,
+            min: 11,
             max: 11,
-            message: "长度为11字符",
+            message: "长度为11位数字",
+            trigger: "blur",
+          },
+        ],
+        address: [
+          { required: true, message: "请输入详细地址", trigger: "blur" },
+          {
+            min: 1,
+            max: 60,
+            message: "描述过长",
             trigger: "blur",
           },
         ],
@@ -376,7 +384,7 @@ export default {
     },
     delRow(id) {
       this.request.delete("/address/" + id).then((res) => {
-        console.log(id);
+        // console.log(id);
         if (res.data) {
           this.$message.success("删除成功");
           this.load();
@@ -411,4 +419,15 @@ export default {
 </script>
 
 <style scoped>
+.el-table {
+  border-radius: 10px;
+}
+.el-table thead {
+  color: black !important;
+  font-weight: 900 !important;
+}
+
+.el-dialog {
+  border-radius: 10px !important;
+}
 </style>

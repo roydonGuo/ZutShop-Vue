@@ -8,18 +8,23 @@
 body {
   background: rgb(233, 250, 255)
 }
+
 .ml-5 {
   margin-left: 5px;
 }
+
 .mr-5 {
   margin-right: 5px;
 }
+
 .pd-10 {
   padding: 10px 0;
 }
+
 .m-10 {
   margin: 10px 0;
 }
+
 /* 版心 */
 .wrapper {
   inline-size: 1200px;
@@ -135,19 +140,27 @@ a {
 .user img {
   vertical-align: middle;
   /* 图片垂直对齐方式 */
-  height: 40px;
+  height: 42px;
+  width: 42px;
+}
+
+.user img:hover {
+  /* position: absolute; */
+  height: 50px;
+  width: 50px;
+  transition: .3s;
 }
 
 /* 轮播 */
 .banner {
   height: 420px;
-  background-color: #1c036c;
+  background-color: #dacfff52;
 }
 
 .banner .wrapper {
   height: 100%;
   width: 80%;
-  
+
   background-size: cover;
 }
 

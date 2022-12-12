@@ -7,19 +7,43 @@
     <div class="nav">
       <ul>
         <li>
-          <a href="###">收藏</a>
+          <a href="#"><i class="el-icon-star-off"></i>收藏</a>
         </li>
         <li>
-          <a href="###">订单</a>
+          <el-dropdown>
+            <a href="/orders"
+              ><el-badge :value="2" class="item" type="primary">
+                <i class="el-icon-s-order"></i>
+                订单
+              </el-badge></a
+            >
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item
+                ><router-link to="#"
+                  ><i class="el-icon-loading"></i>待付款</router-link
+                ></el-dropdown-item
+              >
+              <el-dropdown-item
+                ><router-link to="#"
+                  ><i class="el-icon-sold-out"></i>待收款</router-link
+                ></el-dropdown-item
+              >
+              <el-dropdown-item
+                ><router-link to="#"
+                  ><i class="el-icon-present"></i>售后服务</router-link
+                ></el-dropdown-item
+              >
+            </el-dropdown-menu>
+          </el-dropdown>
         </li>
         <li>
-          <a href="###">购物车</a>
+          <a href="#"><i class="el-icon-shopping-cart-full"></i>购物车</a>
         </li>
       </ul>
     </div>
     <!-- search -->
     <el-input
-      style="width: 400px;"
+      style="width: 400px"
       placeholder="请输入商品名称"
       suffix-icon="el-icon-goods"
       v-model="goodName"
@@ -46,17 +70,17 @@
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item
             ><router-link to="/user"
-              ><span class="el-icon-user-solid"></span>个人信息</router-link
+              ><i class="el-icon-user"></i>个人信息</router-link
             ></el-dropdown-item
           >
           <el-dropdown-item
             ><router-link to="/password"
-              ><span class="el-icon-lock"></span>修改密码</router-link
+              ><i class="el-icon-lock"></i>修改密码</router-link
             ></el-dropdown-item
           >
           <el-dropdown-item
             ><router-link to="/address"
-              ><span class="el-icon-truck"></span>收货管理</router-link
+              ><i class="el-icon-truck"></i>收货管理</router-link
             ></el-dropdown-item
           >
           <el-dropdown-item style="color: red"
@@ -89,6 +113,7 @@ export default {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning",
+        center: true,
       })
         .then(() => {
           this.request.get("/user/logout").then((res) => {

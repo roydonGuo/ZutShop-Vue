@@ -90,7 +90,7 @@ export default {
         if (valid) {
           // 表单校验合法
           this.request.post("/user/login", this.user).then((res) => {
-            console.log(res);
+            // console.log(res);
             if (res.code === 200) {
               localStorage.setItem(
                 "userInfo",
@@ -99,7 +99,6 @@ export default {
               localStorage.setItem("_t", res.data.token);
               this.$router.push("/");
               this.$message.success("登录成功");
-              
             } else {
               this.$message.error(res.msg);
             }

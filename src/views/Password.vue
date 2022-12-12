@@ -62,6 +62,7 @@ export default {
   },
   created() {
     this.form.username = this.user.username;
+    this.noticeMsg()
   },
   methods: {
     save() {
@@ -81,6 +82,13 @@ export default {
             }
           });
         }
+      });
+    },
+    noticeMsg() {
+      this.$notify({
+        dangerouslyUseHTMLString: true,
+        message: "请确定是 <strong style='color:blue'>" + this.user.username + "</strong> 本人操作",
+        type: "warning",
       });
     },
   },

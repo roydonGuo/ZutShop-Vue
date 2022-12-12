@@ -4,6 +4,7 @@
     <el-main style="padding: 0">
       <Nav></Nav>
       <router-view />
+      
     </el-main>
     <Footer></Footer>
   </div>
@@ -16,7 +17,7 @@ import Footer from "@/components/Footer";
 
 export default {
   name: "Index",
-  components: { Header,Footer,Nav },
+  components: { Header, Footer, Nav },
   data() {
     return {
       user: {},
@@ -33,10 +34,7 @@ export default {
         : null;
       if (this.user) {
         this.isLogin = true;
-        // this.$notify({
-        //   message: '欢迎 '+this.user.username,
-        //   type: 'success'
-        // });
+        
       }
     },
   },

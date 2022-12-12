@@ -1,21 +1,29 @@
 <template>
   <el-card style="max-width: 400px; margin: auto">
-    <el-form label-width="80px" size="small">
-      <el-upload
-        style="text-align: center"
-        class="avatar-uploader"
-        action="http://localhost:7777/file/upload"
-        :show-file-list="false"
-        :on-success="handleAvatarSuccess"
-      >
-        <img
-          v-if="form.avatar"
-          :src="form.avatar"
-          class="avatar"
-          style="border-radius: 50px"
-        />
-        <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-      </el-upload>
+    <el-form
+      label-width="80px"
+      size="small"
+      :model="form"
+      :rules="rules"
+      ref="UpdateUserForm"
+    >
+      <el-tooltip placement="top">
+        <div slot="content">点击上传头像</div>
+        <el-upload
+          style="text-align: center; margin-bottom: 10px"
+          class="avatar-uploader"
+          action="http://localhost:7777/file/upload"
+          :show-file-list="false"
+          :on-success="handleAvatarSuccess"
+        >
+          <img
+            v-if="form.avatar"
+            :src="form.avatar"
+            class="avatar"
+            style="border-radius: 50%"
+          />
+          <i v-else class="el-icon-plus avatar-uploader-icon"></i> </el-upload
+      ></el-tooltip>
       <el-form-item label="用户名">
         <el-input
           v-model="form.username"
@@ -23,7 +31,7 @@
           autocomplete="off"
         ></el-input>
       </el-form-item>
-      <el-form-item label="电话">
+      <el-form-item label="电话" prop="phone">
         <el-input v-model="form.phone" autocomplete="off"></el-input>
       </el-form-item>
       <el-form-item label="邮箱">
@@ -51,6 +59,12 @@ export default {
       user: localStorage.getItem("userInfo")
         ? JSON.parse(localStorage.getItem("userInfo"))
         : {},
+      rules: {
+        phone: [
+          { required: true, message: "请输入手机号", trigger: "blur" },
+          { min: 11, max: 11, message: "请输入正确的手机号", trigger: "blur" },
+        ],
+      },
     };
   },
   created() {
@@ -71,17 +85,21 @@ export default {
       // console.log(this.form.avatar);
     },
     save() {
-      this.request.post("/user/update", this.form).then((res) => {
-        console.log(this.form);
-        if (res.code === 200) {
-          this.$message.success("保存成功");
-          /* 更新浏览器存储*/
-          // this.$emit('refreshUser')
-          // this.form.token=JSON.parse(localStorage.getItem("user")).token
-          localStorage.setItem("userInfo", JSON.stringify(this.form));
-          window.location.reload();
-        } else {
-          this.$message.error("保存失败");
+      this.$refs["UpdateUserForm"].validate((valid) => {
+        if (valid) {
+          this.request.post("/user/update", this.form).then((res) => {
+            console.log(this.form);
+            if (res.code === 200) {
+              this.$message.success("保存成功");
+              /* 更新浏览器存储*/
+              // this.$emit('refreshUser')
+              // this.form.token=JSON.parse(localStorage.getItem("user")).token
+              localStorage.setItem("userInfo", JSON.stringify(this.form));
+              window.location.reload();
+            } else {
+              this.$message.error("保存失败");
+            }
+          });
         }
       });
     },

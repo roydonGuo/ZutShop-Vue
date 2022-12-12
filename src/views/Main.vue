@@ -1,91 +1,97 @@
 <template>
   <!-- 轮播 -->
-  <div class="banner">
-    <div class="wrapper" style="position: relative">
-      <!-- 轮播 -->
-      <div class="showImg" style="position: absolute">
-        <img
-          @mouseover="changeInterval(true)"
-          @mouseleave="changeInterval(false)"
-          v-for="item in imgArr"
-          :key="item.id"
-          :src="item.url"
-          alt="暂无图片"
-          v-show="item.id === currentIndex"
-        />
-        <div @click="clickIcon('up')" class="iconDiv icon-left">
-          <i class="el-icon-caret-left"></i>
+  <div>
+    <div class="banner">
+      <div class="wrapper" style="position: relative">
+        <!-- 轮播 -->
+        <div class="showImg" style="position: absolute">
+          <img
+            @mouseover="changeInterval(true)"
+            @mouseleave="changeInterval(false)"
+            v-for="item in imgArr"
+            :key="item.id"
+            :src="item.url"
+            alt="暂无图片"
+            v-show="item.id === currentIndex"
+          />
+          <div @click="clickIcon('up')" class="iconDiv icon-left">
+            <i class="el-icon-caret-left"></i>
+          </div>
+          <div @click="clickIcon('down')" class="iconDiv icon-right">
+            <i class="el-icon-caret-right"></i>
+          </div>
+          <div class="banner-circle">
+            <ul>
+              <li
+                @click="changeImg(item.id)"
+                v-for="item in imgArr"
+                :key="item.id"
+                :class="item.id === currentIndex ? 'active' : ''"
+              ></li>
+            </ul>
+          </div>
         </div>
-        <div @click="clickIcon('down')" class="iconDiv icon-right">
-          <i class="el-icon-caret-right"></i>
-        </div>
-        <div class="banner-circle">
+        <div class="left">
           <ul>
-            <li
-              @click="changeImg(item.id)"
-              v-for="item in imgArr"
-              :key="item.id"
-              :class="item.id === currentIndex ? 'active' : ''"
-            ></li>
+            <li>
+              <a href="#">电脑办公<span>&gt;</span></a>
+            </li>
+            <li>
+              <a href="#">电脑办公<span>&gt;</span></a>
+            </li>
+            <li>
+              <a href="#">电脑办公<span>&gt;</span></a>
+            </li>
+            <li>
+              <a href="#">电脑办公<span>&gt;</span></a>
+            </li>
+            <li>
+              <a href="#">电脑办公<span>&gt;</span></a>
+            </li>
+            <li>
+              <a href="#">电脑办公<span>&gt;</span></a>
+            </li>
+            <li>
+              <a href="#">电脑办公<span>&gt;</span></a>
+            </li>
+            <li>
+              <a href="#">电脑办公<span>&gt;</span></a>
+            </li>
+            <li>
+              <a href="#">电脑办公<span>&gt;</span></a>
+            </li>
           </ul>
         </div>
-      </div>
-      <div class="left">
-        <ul>
-          <li>
-            <a href="#">电脑办公<span>&gt;</span></a>
-          </li>
-          <li>
-            <a href="#">电脑办公<span>&gt;</span></a>
-          </li>
-          <li>
-            <a href="#">电脑办公<span>&gt;</span></a>
-          </li>
-          <li>
-            <a href="#">电脑办公<span>&gt;</span></a>
-          </li>
-          <li>
-            <a href="#">电脑办公<span>&gt;</span></a>
-          </li>
-          <li>
-            <a href="#">电脑办公<span>&gt;</span></a>
-          </li>
-          <li>
-            <a href="#">电脑办公<span>&gt;</span></a>
-          </li>
-          <li>
-            <a href="#">电脑办公<span>&gt;</span></a>
-          </li>
-          <li>
-            <a href="#">电脑办公<span>&gt;</span></a>
-          </li>
-        </ul>
-      </div>
-      <div class="right">
-        <h2>我的订单</h2>
-        <div class="content">
-          <dl>
-            <dt>惠普-星15笔记本</dt>
-            <dd>正在运输中</dd>
-          </dl>
-          <dl>
-            <dt>惠普-星14笔记本</dt>
-            <dd>正在运输中</dd>
-          </dl>
-          <dl>
-            <dt>惠普-星13笔记本</dt>
-            <dd>已签收</dd>
-          </dl>
+        <div class="right">
+          <h2>我的订单</h2>
+          <div class="content">
+            <dl>
+              <dt>惠普-星15笔记本</dt>
+              <dd>正在运输中</dd>
+            </dl>
+            <dl>
+              <dt>惠普-星14笔记本</dt>
+              <dd>正在运输中</dd>
+            </dl>
+            <dl>
+              <dt>惠普-星13笔记本</dt>
+              <dd>已签收</dd>
+            </dl>
+          </div>
+          <a href="#" class="more">订单详情</a>
         </div>
-        <a href="#" class="more">订单详情</a>
       </div>
     </div>
+    <!-- 商品推荐区域 -->
+    <Recommend></Recommend>
   </div>
 </template>
 
 <script>
+import Recommend from "@/components/Recommend";
 export default {
   name: "Main",
+  components: { Recommend },
   data() {
     return {
       currentIndex: 0, //当前所在图片下标
@@ -107,7 +113,7 @@ export default {
         {
           id: 4,
           url: "https://img1.imgtp.com/2022/12/15/CoL2GHhV.png",
-        }
+        },
       ],
     };
   },
