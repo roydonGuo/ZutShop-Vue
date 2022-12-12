@@ -6,8 +6,7 @@ Vue.use(VueRouter)
 const routes = [{
     path: '/',
     component: () => import('../views/Index.vue'),
-    children: [
-      {
+    children: [{
         path: '/',
         component: () => import('../views/Main.vue'),
       },
@@ -33,6 +32,7 @@ const routes = [{
       },
       {
         path: '/goods',
+        name: 'goods',
         component: () => import('../views/Goods.vue'),
       },
       {
