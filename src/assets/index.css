@@ -1,0 +1,401 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* 固定父级元素 */
+}
+
+body {
+  background: rgb(233, 250, 255)
+}
+.ml-5 {
+  margin-left: 5px;
+}
+.mr-5 {
+  margin-right: 5px;
+}
+.pd-10 {
+  padding: 10px 0;
+}
+.m-10 {
+  margin: 10px 0;
+}
+/* 版心 */
+.wrapper {
+  inline-size: 1200px;
+  margin: 0 auto;
+}
+
+li {
+  list-style: none;
+  /* 去除小圆点 */
+}
+
+a {
+  text-decoration: none;
+  /* 去除a标签下划线 */
+}
+
+/* 清除浮动 */
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.header {
+
+  height: 42px;
+  width: 80%;
+  /* background-color: white; */
+  margin: 30px auto;
+  /* box-shadow: 0px 2px 4px black; */
+}
+
+.logo {
+  float: left;
+  margin-right: 70px;
+}
+
+.header .nav {
+  float: right;
+  height: 100%;
+  /* background-color: rgb(141, 16, 231); */
+
+}
+
+.header .nav li {
+  float: left;
+  margin-right: 26px;
+
+}
+
+.header .nav li a {
+  display: inline-block;
+  padding: 0 9px;
+  height: 42px;
+  line-height: 42px;
+
+  font-size: 18px;
+  color: black;
+}
+
+.header .nav li a:hover {
+  border-bottom: 2px solid #000;
+}
+
+/* search */
+.search {
+  float: left;
+  width: 348px;
+  height: 42px;
+  border-radius: 10px;
+  margin-left: 59px;
+  border: 1px solid #00a4ff;
+}
+
+.search input {
+  /* display: inline-block; */
+  float: left;
+  height: 40px;
+  width: 300px;
+  font-size: 16px;
+  border-radius: 10px 0 0 10px;
+  padding: 0 0 0 20px;
+  border: 0;
+}
+
+.search button {
+  /* display: inline-block; */
+  float: right;
+  border-radius: 0 10px 10px 0;
+  width: 46px;
+  height: 40px;
+  background: url('./images/btn.png');
+  border: 0;
+}
+
+/* placeholder控制器 */
+.search input::placeholder {
+  font-size: 14px;
+  color: #bfbfbf;
+}
+
+.user {
+  float: right;
+  height: 42px;
+  margin-right: 35px;
+  line-height: 42px;
+}
+
+.user img {
+  vertical-align: middle;
+  /* 图片垂直对齐方式 */
+  height: 40px;
+}
+
+/* 轮播 */
+.banner {
+  height: 420px;
+  background-color: #1c036c;
+}
+
+.banner .wrapper {
+  height: 100%;
+  width: 80%;
+  
+  background-size: cover;
+}
+
+.banner .wrapper .left {
+  position: absolute;
+  /* float: left; */
+  left: 0;
+  padding: 0 20px;
+  width: 180px;
+  height: 420px;
+  background-color: #00233680;
+}
+
+.banner .wrapper .left li {
+  width: 150px;
+  height: 45px;
+  line-height: 45px;
+  font-size: 18px;
+  margin-bottom: 1px;
+}
+
+.banner .wrapper .left li span {
+  float: right;
+}
+
+.banner .wrapper .left li a {
+  color: white;
+  float: left;
+  padding: 0 10%;
+  border-radius: 10px;
+  height: 45px;
+  width: 150px;
+}
+
+.banner .wrapper .left li a:hover {
+  color: #000;
+  background-color: #409EFF;
+}
+
+.banner .wrapper .right {
+  position: absolute;
+  /* float: right; */
+  right: 0;
+  margin-top: 50px;
+  width: 180px;
+  height: 300px;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+}
+
+.banner .wrapper .right h2 {
+  height: 48px;
+  background-color: #00a4ff;
+  /* font-size: 18px; */
+  line-height: 48px;
+  text-align: center;
+  color: white;
+}
+
+.banner .wrapper .right .content {
+  padding: 0 18px;
+}
+
+.banner .wrapper .right .content dl {
+  padding: 15px 0;
+  border-bottom: 2px solid #e5e5e5;
+
+}
+
+.banner .wrapper .right .content dt {
+  font-size: 14px;
+  color: black;
+}
+
+.banner .wrapper .right .content dd {
+  font-size: 12px;
+  color: #bfbfbf;
+}
+
+.banner .wrapper .right .more {
+  margin: 4px 14px 0;
+  display: block;
+  /* width: 200px; */
+  border: 1px solid #4bb1e9;
+  height: 42px;
+  line-height: 40px;
+  font-size: 18px;
+  color: #07a4f9;
+  text-align: center;
+
+}
+
+.nice {
+  margin-top: 8px;
+  background-color: #fff;
+  padding: 0 26px 0 34px;
+  height: 60px;
+  line-height: 60px;
+  box-shadow: 0 2px 3px 0 rgba(118, 118, 118, .2);
+}
+
+.nice h2 {
+  float: left;
+
+  font-size: 16px;
+  color: #00a4ff;
+  font-weight: 400;
+}
+
+.nice ul {
+  float: left;
+  margin-left: 30px;
+}
+
+.nice li {
+  float: left;
+}
+
+.nice li a {
+  padding: 0 30px;
+  border-left: 1px solid #bfbfbf;
+  font-size: 16px;
+
+}
+
+.nice .motify {
+  float: right;
+  font-size: 16px;
+  color: #00a4ff;
+}
+
+/*  */
+.nice-class {
+  margin-top: 8px;
+}
+
+.nice-class .title {
+
+  height: 40px;
+  /* line-height: 40px; */
+  /* background-color: #fff; */
+}
+
+.nice-class .title h2 {
+  float: left;
+  font-size: 25px;
+  color: #494949;
+
+}
+
+.nice-class .title a {
+  margin-top: 10px;
+  float: right;
+  margin-right: 30px;
+  font-size: 12px;
+  color: #a5a5a5;
+}
+
+.nice-class .content li {
+  position: relative;
+}
+
+.nice-class .content li .hot {
+  position: absolute;
+  background-color: rgb(231, 136, 136);
+  height: 15px;
+  width: 50px;
+  right: -5px;
+  top: 5px;
+
+}
+
+.nice-class .content li {
+  background-color: #fff;
+  float: left;
+  width: 228px;
+  height: 280px;
+  margin-right: 15px;
+  margin-bottom: 15px;
+
+}
+
+.nice-class .content li:nth-child(5n) {
+  margin-right: 0;
+}
+
+.nice-class .content h3 {
+  padding: 20px 15px;
+}
+
+.nice-class .content h3:hover {
+  color: black;
+}
+
+.nice-class .content p {
+  padding: 0 15px;
+  color: #a5a5a5;
+}
+
+.nice-class .content span {
+  color: orange;
+}
+
+.footer {
+  margin-top: 100px;
+  height: 200px;
+  padding: 30px 0;
+  background-color: #fff;
+}
+
+.footer .left {
+  float: left;
+}
+
+.footer .left p {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.footer .left a {
+  display: block;
+  height: 36px;
+  width: 120px;
+  line-height: 36px;
+  text-align: center;
+  color: #00a4ff;
+  border: 1px solid #00a4ff;
+
+}
+
+.footer .left a:hover {
+  color: white;
+  background-color: #00a4ff;
+}
+
+.footer .right {
+  float: right;
+}
+
+.footer .right dl {
+  float: left;
+}
+
+.footer .right dl {
+  font-size: 16px;
+  margin-left: 80px;
+}
+
+.footer .right dd {
+  font-size: 12px;
+}
