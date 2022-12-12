@@ -187,6 +187,7 @@ export default {
   border-radius: 10px !important;
 }
 .box-card {
+  /* background: linear-gradient(90deg,#1fffd0,#d8e5ff); */
   background: gold;
   border-radius: 10px;
 }

@@ -102,11 +102,10 @@
         class="box-card clearfix orderInfo"
         style="padding: 20px"
       >
-        <span>收货人姓名：</span><strong>roydon</strong> 
-        <span>联系电话：</span
+        <span>收货人姓名：</span><strong>roydon</strong> <span>联系电话：</span
         ><strong>1820***8745</strong> <span>邮政编码：</span
         ><strong>476600</strong> <span>收货地址：</span
-        ><strong>{{order.address}}</strong>
+        ><strong>{{ order.address }}</strong>
       </div>
     </div>
     <!--  物流信息 -->

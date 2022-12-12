@@ -4,6 +4,8 @@
     <el-main style="padding: 0">
       <Nav></Nav>
       <router-view />
+      <!-- <button class="top circle" @click="toTop">^</button> -->
+      <el-backtop></el-backtop>
     </el-main>
     <Footer></Footer>
   </div>
@@ -39,9 +41,20 @@ export default {
         ? Number(localStorage.getItem("_oNum"))
         : 0;
     },
+    // toTop() {
+    //   document.documentElement.scrollTop = 0;
+    // },
   },
 };
 </script>
 
 <style scoped>
+.top {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    bottom: 50px;
+    right: 100px;
+    background-color: aqua;
+  }
 </style>

@@ -37,7 +37,7 @@
           </el-dropdown>
         </li>
         <li>
-          <a href="#"><i class="el-icon-shopping-cart-full"></i>购物车</a>
+          <a href="/cart"><i class="el-icon-shopping-cart-full"></i>购物车</a>
         </li>
       </ul>
     </div>
@@ -99,18 +99,22 @@ export default {
   props: {
     user: Object,
     isLogin: Boolean,
-    orderNum: Number
+    orderNum: Number,
   },
   data() {
     return {
       goodName: "",
+      // title: "",
       // orderNum: 0,
     };
   },
-  created() {
-  },
+  created() {},
   methods: {
-    searchGood() {},
+    searchGood() {
+      localStorage.setItem("goodName", String(this.goodName));
+      this.$router.push("/goods");
+      window.location.reload();
+    },
     logout() {
       this.$confirm("确定要退出登录?", "退出登录", {
         confirmButtonText: "确定",
@@ -127,7 +131,7 @@ export default {
               localStorage.removeItem("toOrderInfo");
               localStorage.removeItem("_oNum");
               // this.$router.push("/");
-              this.$router.push("/", true);
+              this.$router.push("/");
               window.location.reload();
               this.$message.success("退出成功");
             } else {

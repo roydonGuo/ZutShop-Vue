@@ -368,7 +368,8 @@ a {
   margin-top: 100px;
   height: 200px;
   padding: 30px 0;
-  background-color: #fff;
+  background: linear-gradient(80deg, #1fffd0, #d8e5ff);
+  /* background-color: #fff; */
 }
 
 .footer .left {
