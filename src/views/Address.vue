@@ -1,67 +1,35 @@
 <template>
   <div style="margin: 0 10%">
-    <el-table
-      :data="addressData"
-      border
-      stripe
-      :header-cell-class-name="headerBg"
-      @selection-change="handleSelectionChange"
-    >
+    <el-table :data="addressData" border stripe :header-cell-class-name="headerBg"
+      @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="35"></el-table-column>
-      <el-table-column label="地址类型" width="80"
-        ><template slot-scope="scope">
+      <el-table-column label="地址类型" width="80"><template slot-scope="scope">
           <el-tag>{{ scope.row.tag }}</el-tag>
-        </template></el-table-column
-      >
+        </template></el-table-column>
       <el-table-column prop="name" label="收货人" width="120"></el-table-column>
       <el-table-column prop="district" label="地址"></el-table-column>
       <el-table-column prop="address" label="详细地址"></el-table-column>
-      <el-table-column
-        prop="phone"
-        label="联系电话"
-        width="120"
-      ></el-table-column>
+      <el-table-column prop="phone" label="联系电话" width="120"></el-table-column>
       <el-table-column align="center" label="默认地址" width="120">
         <template slot-scope="scope">
-          <el-switch
-            v-model="scope.row.isDefault"
-            :active-value="1"
-            :inactive-value="0"
-            @change="changeDefault(scope.row)"
-          />
+          <el-switch v-model="scope.row.isDefault" :active-value="1" :inactive-value="0"
+            @change="changeDefault(scope.row)" />
         </template>
       </el-table-column>
       <el-table-column label="操作" width="250" align="center">
         <template slot-scope="scope">
-          <el-button type="success" @click="handleEdit(scope.row)"
-            >编辑 <i class="el-icon-edit"></i
-          ></el-button>
-          <el-popconfirm
-            class="ml-5"
-            confirm-button-text="确定"
-            cancel-button-text="我再想想"
-            icon="el-icon-info"
-            icon-color="red"
-            title="您确定删除吗？"
-            @confirm="delRow(scope.row.aid)"
-          >
-            <el-button type="danger" slot="reference"
-              >删除 <i class="el-icon-remove-outline"></i>
+          <el-button type="success" @click="handleEdit(scope.row)">编辑 <i class="el-icon-edit"></i></el-button>
+          <el-popconfirm class="ml-5" confirm-button-text="确定" cancel-button-text="我再想想" icon="el-icon-info"
+            icon-color="red" title="您确定删除吗？" @confirm="delRow(scope.row.aid)">
+            <el-button type="danger" slot="reference">删除 <i class="el-icon-remove-outline"></i>
             </el-button>
           </el-popconfirm>
         </template>
       </el-table-column>
     </el-table>
     <div style="margin: 10px 0; display: inline-block">
-      <el-pagination
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-        :current-page="pageNum"
-        :page-sizes="[5, 10, 20]"
-        :page-size="pageSize"
-        layout="total, sizes, prev, pager, next, jumper"
-        :total="total"
-      >
+      <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="pageNum"
+        :page-sizes="[5, 10, 20]" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper" :total="total">
       </el-pagination>
     </div>
     <!-- 修改地址的dialog -->
@@ -74,25 +42,11 @@
           <el-input v-model="form.zip" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="收货地址">
-          <el-cascader
-            size="large"
-            placeholder="试试搜索：河南"
-            filterable
-            separator="--"
-            :options="options"
-            v-model="selectedOptions"
-            @change="addressChoose"
-            :props="{ expandTrigger: 'hover' }"
-          >
-          </el-cascader
-        ></el-form-item>
+          <el-cascader size="large" placeholder="试试搜索：河南" filterable separator="--" :options="options"
+            v-model="selectedOptions" @change="addressChoose" :props="{ expandTrigger: 'hover' }">
+          </el-cascader></el-form-item>
         <el-form-item label="详细地址">
-          <el-input
-            type="textarea"
-            :rows="2"
-            v-model="form.address"
-            autocomplete="off"
-          ></el-input>
+          <el-input type="textarea" :rows="2" v-model="form.address" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="电话">
           <el-input v-model="form.phone" autocomplete="off"></el-input>
@@ -107,42 +61,20 @@
       </div>
     </el-dialog>
     <!-- 新增地址的dialog -->
-    <el-dialog
-      title="新增地址："
-      :visible.sync="addDialogFormVisible"
-      width="50%"
-    >
-      <el-form
-        :model="form"
-        label-width="100px"
-        size="small"
-        :rules="rules"
-        ref="addressForm"
-      >
+    <el-dialog title="新增地址：" :visible.sync="addDialogFormVisible" width="50%">
+      <el-form :model="form" label-width="100px" size="small" :rules="rules" ref="addressForm">
         <el-row>
           <el-col :span="12">
             <el-form-item label="收货人" prop="name">
               <el-input v-model="form.name" autocomplete="off"> </el-input>
-            </el-form-item> </el-col
-          ><el-col :span="12"
-            ><el-form-item label="手机" prop="phone">
+            </el-form-item> </el-col><el-col :span="12"><el-form-item label="手机" prop="phone">
               <el-input v-model="form.phone" autocomplete="off"></el-input>
-            </el-form-item> </el-col
-        ></el-row>
+            </el-form-item> </el-col></el-row>
         <el-row>
           <el-form-item label="收货地址">
-            <el-cascader
-              size="large"
-              placeholder="试试搜索：河南"
-              filterable
-              separator="--"
-              :options="options"
-              v-model="selectedOptions"
-              @change="addressChoose"
-              :props="{ expandTrigger: 'hover' }"
-            >
-            </el-cascader
-          ></el-form-item>
+            <el-cascader size="large" placeholder="试试搜索：河南" filterable separator="--" :options="options"
+              v-model="selectedOptions" @change="addressChoose" :props="{ expandTrigger: 'hover' }">
+            </el-cascader></el-form-item>
           <!-- <el-form-item label="收货地址">
             <el-col :span="8">
               <el-select v-model="district" filterable placeholder="请选择">
@@ -180,12 +112,7 @@
           <el-input v-model="form.zip" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="详细地址" prop="address">
-          <el-input
-            type="textarea"
-            :rows="2"
-            v-model="form.address"
-            autocomplete="off"
-          ></el-input>
+          <el-input type="textarea" :rows="2" v-model="form.address" autocomplete="off"></el-input>
         </el-form-item>
 
         <el-form-item label="地址类型">
@@ -197,29 +124,17 @@
         <el-button type="primary" @click="addAddress">确 定</el-button>
       </div>
     </el-dialog>
-    <div
-      style="
+    <div style="
         margin: 0 0 10px;
         padding: 10px 0;
         display: inline-block;
         float: right;
-      "
-    >
-      <el-button type="primary" class="mr-5" @click="handleAdd"
-        >新增收货地址 <i class="el-icon-circle-plus-outline"></i>
+      ">
+      <el-button type="primary" class="mr-5" @click="handleAdd">新增收货地址 <i class="el-icon-circle-plus-outline"></i>
       </el-button>
-      <el-popconfirm
-        class="mr-5"
-        confirm-button-text="确定"
-        cancel-button-text="我再想想"
-        icon="el-icon-info"
-        icon-color="red"
-        title="您确定批量删除这些数据吗？"
-        @confirm="delBatch"
-      >
-        <el-button type="danger" slot="reference"
-          >批量删除 <i class="el-icon-remove-outline"></i
-        ></el-button>
+      <el-popconfirm class="mr-5" confirm-button-text="确定" cancel-button-text="我再想想" icon="el-icon-info"
+        icon-color="red" title="您确定批量删除这些数据吗？" @confirm="delBatch">
+        <el-button type="danger" slot="reference">批量删除 <i class="el-icon-remove-outline"></i></el-button>
       </el-popconfirm>
     </div>
   </div>
@@ -429,6 +344,7 @@ export default {
 .el-table {
   border-radius: 10px;
 }
+
 .el-table thead {
   color: black !important;
   font-weight: 900 !important;

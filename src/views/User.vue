@@ -1,35 +1,15 @@
 <template>
   <el-card style="max-width: 400px; margin: auto">
-    <el-form
-      label-width="80px"
-      size="small"
-      :model="form"
-      :rules="rules"
-      ref="UpdateUserForm"
-    >
+    <el-form label-width="80px" size="small" :model="form" :rules="rules" ref="UpdateUserForm">
       <el-tooltip placement="top">
         <div slot="content">点击上传头像</div>
-        <el-upload
-          style="text-align: center; margin-bottom: 10px"
-          class="avatar-uploader"
-          action="http://localhost:7777/file/upload"
-          :show-file-list="false"
-          :on-success="handleAvatarSuccess"
-        >
-          <img
-            v-if="form.avatar"
-            :src="form.avatar"
-            class="avatar"
-            style="border-radius: 50%"
-          />
-          <i v-else class="el-icon-plus avatar-uploader-icon"></i> </el-upload
-      ></el-tooltip>
+        <el-upload style="text-align: center; margin-bottom: 10px" class="avatar-uploader"
+          action="http://localhost:7777/file/upload" :show-file-list="false" :on-success="handleAvatarSuccess">
+          <img v-if="form.avatar" :src="form.avatar" class="avatar" style="border-radius: 50%" />
+          <i v-else class="el-icon-plus avatar-uploader-icon"></i> </el-upload>
+      </el-tooltip>
       <el-form-item label="用户名">
-        <el-input
-          v-model="form.username"
-          disabled
-          autocomplete="off"
-        ></el-input>
+        <el-input v-model="form.username" disabled autocomplete="off"></el-input>
       </el-form-item>
       <el-form-item label="电话" prop="phone">
         <el-input v-model="form.phone" autocomplete="off"></el-input>

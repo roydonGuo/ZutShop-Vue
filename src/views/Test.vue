@@ -1,11 +1,6 @@
 <template>
   <div style="width: 460px">
-    <el-cascader
-      style="width: 100%"
-      :options="options"
-      v-model="selectedOptions"
-      @change="addressChoose"
-    ></el-cascader>
+    <el-cascader style="width: 100%" :options="options" v-model="selectedOptions" @change="addressChoose"></el-cascader>
   </div>
 </template>
 

@@ -1,32 +1,14 @@
 <template>
   <el-card style="width: 500px; margin: 0 auto">
-    <el-form
-      label-width="120px"
-      size="small"
-      :model="form"
-      :rules="rules"
-      ref="pass"
-    >
+    <el-form label-width="120px" size="small" :model="form" :rules="rules" ref="pass">
       <el-form-item label="原密码" prop="password">
-        <el-input
-          v-model="form.password"
-          autocomplete="off"
-          show-password
-        ></el-input>
+        <el-input v-model="form.password" autocomplete="off" show-password></el-input>
       </el-form-item>
       <el-form-item label="新密码" prop="newPassword">
-        <el-input
-          v-model="form.newPassword"
-          autocomplete="off"
-          show-password
-        ></el-input>
+        <el-input v-model="form.newPassword" autocomplete="off" show-password></el-input>
       </el-form-item>
       <el-form-item label="确认新密码" prop="confirmPassword">
-        <el-input
-          v-model="form.confirmPassword"
-          autocomplete="off"
-          show-password
-        ></el-input>
+        <el-input v-model="form.confirmPassword" autocomplete="off" show-password></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="save">确 定</el-button>
@@ -100,6 +82,7 @@ export default {
   text-align: center;
   padding-bottom: 10px;
 }
+
 .avatar-uploader .el-upload {
   border: 1px dashed #d9d9d9;
   border-radius: 6px;
@@ -107,9 +90,11 @@ export default {
   position: relative;
   overflow: hidden;
 }
+
 .avatar-uploader .el-upload:hover {
   border-color: #409eff;
 }
+
 .avatar-uploader-icon {
   font-size: 28px;
   color: #8c939d;
@@ -118,6 +103,7 @@ export default {
   line-height: 138px;
   text-align: center;
 }
+
 .avatar {
   width: 138px;
   height: 138px;

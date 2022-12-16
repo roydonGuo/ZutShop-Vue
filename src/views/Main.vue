@@ -5,15 +5,8 @@
       <div class="wrapper" style="position: relative">
         <!-- 轮播 -->
         <div class="showImg" style="position: absolute">
-          <img
-            @mouseover="changeInterval(true)"
-            @mouseleave="changeInterval(false)"
-            v-for="item in imgArr"
-            :key="item.id"
-            :src="item.url"
-            alt="暂无图片"
-            v-show="item.id === currentIndex"
-          />
+          <img @mouseover="changeInterval(true)" @mouseleave="changeInterval(false)" v-for="item in imgArr"
+            :key="item.id" :src="item.url" alt="暂无图片" v-show="item.id === currentIndex" />
           <div @click="clickIcon('up')" class="iconDiv icon-left">
             <i class="el-icon-caret-left"></i>
           </div>
@@ -22,12 +15,8 @@
           </div>
           <div class="banner-circle">
             <ul>
-              <li
-                @click="changeImg(item.id)"
-                v-for="item in imgArr"
-                :key="item.id"
-                :class="item.id === currentIndex ? 'active' : ''"
-              ></li>
+              <li @click="changeImg(item.id)" v-for="item in imgArr" :key="item.id"
+                :class="item.id === currentIndex ? 'active' : ''"></li>
             </ul>
           </div>
         </div>
@@ -138,10 +127,10 @@ export default {
         }
       } else {
         /* 第一种写法
-					this.currentIndex--;
-					if(this.currentIndex < 0){
-						this.currentIndex = this.imgArr.length-1;
-					} */
+          this.currentIndex--;
+          if(this.currentIndex < 0){
+            this.currentIndex = this.imgArr.length-1;
+          } */
         // 第二种写法
         if (this.currentIndex === 0) {
           this.currentIndex = this.imgArr.length;
@@ -173,12 +162,14 @@ export default {
 li {
   list-style-type: none;
 }
+
 .showImg {
   position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
+
 /* 轮播图片 */
 .showImg img {
   width: 100%;
@@ -200,12 +191,15 @@ li {
   font-size: 25px;
   cursor: pointer;
 }
+
 .iconDiv:hover {
   background-color: rgb(145, 211, 255);
 }
+
 .icon-left {
   left: 15%;
 }
+
 .icon-right {
   right: 15%;
 }
@@ -217,11 +211,13 @@ li {
   width: 100%;
   height: 20px;
 }
+
 .banner-circle ul {
   margin: 0 30%;
   height: 100%;
   text-align: center;
 }
+
 .banner-circle ul li {
   display: inline-block;
   width: 10px;
@@ -231,6 +227,7 @@ li {
   background-color: rgba(125, 125, 125, 0.8);
   cursor: pointer;
 }
+
 .active {
   background-color: rgb(65, 135, 246) !important;
 }

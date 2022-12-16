@@ -13,9 +13,7 @@
             <span>收货人：</span><strong>{{ orderItem.oid }}</strong>
           </div>
           <div>
-            <table
-              style="width: 100%; border-radius: 10px; border: 2px solid black"
-            >
+            <table style="width: 100%; border-radius: 10px; border: 2px solid black">
               <thead style="border-bottom: 1px solid black">
                 <tr>
                   <th></th>
@@ -31,9 +29,9 @@
                     <img style="border-radius: 10px" :src="orderItem.image" />
                   </td>
                   <td style="width: 50%">
-                    <a href="#"
-                      ><h3>{{ orderItem.title }}</h3></a
-                    >
+                    <a href="#">
+                      <h3>{{ orderItem.title }}</h3>
+                    </a>
                   </td>
                   <td>
                     <h3>{{ "￥" + orderItem.price }}</h3>
@@ -97,15 +95,9 @@
     <!-- 收货详情 -->
     <div style="margin: 0 0 20px">
       <h2>收货详情</h2>
-      <div
-        slot="header"
-        class="box-card clearfix orderInfo"
-        style="padding: 20px"
-      >
-        <span>收货人姓名：</span><strong>roydon</strong> <span>联系电话：</span
-        ><strong>1820***8745</strong> <span>邮政编码：</span
-        ><strong>476600</strong> <span>收货地址：</span
-        ><strong>{{ order.address }}</strong>
+      <div slot="header" class="box-card clearfix orderInfo" style="padding: 20px">
+        <span>收货人姓名：</span><strong>roydon</strong> <span>联系电话：</span><strong>1820***8745</strong>
+        <span>邮政编码：</span><strong>476600</strong> <span>收货地址：</span><strong>{{ order.address }}</strong>
       </div>
     </div>
     <!--  物流信息 -->
@@ -145,7 +137,7 @@ export default {
       : null;
     this.getOrderByOid();
   },
-  mounted() {},
+  mounted() { },
   methods: {
     async getOrderByOid() {
       if (this.orderItem.oid) {
@@ -168,23 +160,28 @@ export default {
   background: rgb(255, 255, 255);
   border-radius: 10px;
 }
-.orderInfo > span {
+
+.orderInfo>span {
   display: inline-block;
   font-size: 16px;
   font-weight: 300;
   /* color: wheat; */
 }
-.orderInfo > span:nth-child(n + 2) {
+
+.orderInfo>span:nth-child(n + 2) {
   padding: 0 0 0 10px;
 }
-.orderInfo > strong {
+
+.orderInfo>strong {
   display: inline-block;
   font-size: 18px;
   font-weight: 600;
 }
-tbody > tr > td h3 {
+
+tbody>tr>td h3 {
   text-align: center;
 }
+
 div h2 {
   padding: 10px;
   background: #409eff;

@@ -8,10 +8,11 @@ export default {
   data() {
     return {};
   },
-  created() {},
+  created() { },
   methods: {},
 };
 </script>
 
 <style scoped>
+
 </style>

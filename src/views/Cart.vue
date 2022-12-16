@@ -1,4 +1,6 @@
-<template><div>cart</div></template>
+<template>
+  <div>cart</div>
+</template>
 
 <script>
 export default {
@@ -6,10 +8,11 @@ export default {
   data() {
     return {};
   },
-  created() {},
-  methods() {},
+  created() { },
+  methods: {},
 };
 </script>
 
 <style scoped>
+
 </style>

@@ -7,30 +7,18 @@
           <span>订单号：</span><strong>{{ o.oid }}</strong>
           <span>下单时间：</span><strong>{{ o.orderTime }}</strong>
           <span>收货人：</span><strong>{{ o.name }}</strong>
-          <strong style="float: right">{{ "￥" + o.totalPrice }}</strong
-          ><span style="float: right">订单总金额：</span>
+          <strong style="float: right">{{ "￥" + o.totalPrice }}</strong><span style="float: right">订单总金额：</span>
           <!-- <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button> -->
         </div>
         <div>
           <!-- {{ "列表内容 " + o }}----订单中商品列表 -->
           <!-- 商品	单价	数量	小计	售后	状态	操作 -->
-          <el-table
-            :data="o.orderItemList"
-            row-key="id"
-            :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
-            default-expand-all
-            :summary-method="getTotalPrice"
-            show-summary
-            stripe
-            border
-          >
+          <el-table :data="o.orderItemList" row-key="id"
+            :tree-props="{ children: 'children', hasChildren: 'hasChildren' }" default-expand-all
+            :summary-method="getTotalPrice" show-summary stripe border>
             <el-table-column label="" width="180">
               <template slot-scope="scope">
-                <img
-                  style="width: 100%; height: 100%"
-                  :src="scope.row.image"
-                  alt="图片加载失败"
-                />
+                <img style="width: 100%; height: 100%" :src="scope.row.image" alt="图片加载失败" />
               </template>
             </el-table-column>
             <el-table-column label="商品" prop="title"></el-table-column>
@@ -39,24 +27,13 @@
                 <strong>{{ "￥" + scope.row.price }}</strong></template
               > -->
             </el-table-column>
-            <el-table-column
-              label="数量"
-              width="50"
-              prop="num"
-            ></el-table-column>
-            <el-table-column label="小计" width="150"
-              ><template slot-scope="scope">
+            <el-table-column label="数量" width="50" prop="num"></el-table-column>
+            <el-table-column label="小计" width="150"><template slot-scope="scope">
                 <strong>{{
-                  "￥" + scope.row.price * scope.row.num
-                }}</strong></template
-              ></el-table-column
-            >
+                    "￥" + scope.row.price * scope.row.num
+                }}</strong></template></el-table-column>
             <el-table-column label="售后" width="100">
-              <a href="#"
-                ><el-button size="mini" type="success" round
-                  >申请售后</el-button
-                ></a
-              >
+              <a href="#"><el-button size="mini" type="success" round>申请售后</el-button></a>
             </el-table-column>
             <el-table-column label="状态" width="100">
               <div>已发货</div>
@@ -64,20 +41,10 @@
 
             <el-table-column label="操作" align="center">
               <template slot-scope="scope">
-                <el-button
-                  size="mini"
-                  type="primary"
-                  class="mr-5"
-                  round
-                  @click="toOrderInfo(scope.row)"
-                  >订单详情</el-button
-                >
-                <el-button
-                  size="mini"
-                  type="success"
-                  @click="sureReceive(scope.row)"
-                  >确认收货<i class="el-icon-circle-check"></i
-                ></el-button>
+                <el-button size="mini" type="primary" class="mr-5" round
+                  @click="toOrderInfo(scope.row)">订单详情</el-button>
+                <el-button size="mini" type="success" @click="sureReceive(scope.row)">确认收货<i
+                    class="el-icon-circle-check"></i></el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -85,15 +52,9 @@
       </el-card>
     </div>
     <div style="padding: 10px 0; display: inline-block">
-      <el-pagination
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-        :current-page="pageNum"
-        :page-sizes="[2, 5, 10, 20]"
-        :page-size="pageSize"
-        layout="total, sizes, prev, pager, next, jumper"
-        :total="total"
-      >
+      <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="pageNum"
+        :page-sizes="[2, 5, 10, 20]" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper"
+        :total="total">
       </el-pagination>
     </div>
   </div>
@@ -169,7 +130,7 @@ export default {
         },
       });
     },
-    sureReceive(row) {},
+    sureReceive(row) { },
   },
 };
 </script>
@@ -178,6 +139,7 @@ export default {
 .el-table {
   border-radius: 10px;
 }
+
 .el-table thead {
   color: black !important;
   font-weight: 900 !important;
@@ -186,21 +148,25 @@ export default {
 .el-dialog {
   border-radius: 10px !important;
 }
+
 .box-card {
   /* background: linear-gradient(90deg,#1fffd0,#d8e5ff); */
   background: gold;
   border-radius: 10px;
 }
-.orderInfo > span {
+
+.orderInfo>span {
   display: inline-block;
   font-size: 16px;
   font-weight: 300;
   /* color: wheat; */
 }
-.orderInfo > span:nth-child(n + 2) {
+
+.orderInfo>span:nth-child(n + 2) {
   padding: 0 0 0 10px;
 }
-.orderInfo > strong {
+
+.orderInfo>strong {
   display: inline-block;
   font-size: 18px;
   font-weight: 600;

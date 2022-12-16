@@ -7,48 +7,30 @@
       </span>
     </header>
     <div class="login-app">
-      <div
-        style="
+      <div style="
           margin: 100px auto;
           background-color: rgba(255, 255, 255, 0.9);
           width: 350px;
           height: 350px;
           padding: 20px;
           border-radius: 10px;
-        "
-      >
+        ">
         <div style="margin: 20px 0; text-align: center; font-size: 24px">
           <b>登 录</b>
         </div>
         <el-form :model="user" :rules="rules" ref="userForm">
           <el-form-item prop="username">
-            <el-input
-              size="medium"
-              style="margin: 10px 0"
-              prefix-icon="el-icon-user"
-              v-model="user.username"
-            ></el-input>
+            <el-input size="medium" style="margin: 10px 0" prefix-icon="el-icon-user"
+              v-model="user.username"></el-input>
           </el-form-item>
           <el-form-item prop="password">
-            <el-input
-              size="medium"
-              style="margin: 10px 0"
-              prefix-icon="el-icon-lock"
-              show-password
-              v-model="user.password"
-            ></el-input>
+            <el-input size="medium" style="margin: 10px 0" prefix-icon="el-icon-lock" show-password
+              v-model="user.password"></el-input>
           </el-form-item>
           <el-form-item style="margin: 10px 0; text-align: right">
-            <el-button
-              type="primary"
-              size="small"
-              autocomplete="off"
-              @click="login"
-              >登录</el-button
-            >
+            <el-button type="primary" size="small" autocomplete="off" @click="login">登录</el-button>
             <el-button type="warning" size="small" autocomplete="off">
-              <router-link to="/register">注册</router-link></el-button
-            >
+              <router-link to="/register">注册</router-link></el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -114,6 +96,7 @@ export default {
 header {
   padding: 0 10%;
 }
+
 .login-app {
   height: 80%;
   /* background-image: linear-gradient(to bottom right, #FC466B, #3F5EFB); */
@@ -121,6 +104,7 @@ header {
   background: url("@/assets/images/login_bg.jpg") no-repeat center;
   background-size: cover;
 }
+
 .pull-right {
   float: right;
   font-size: 2rem;

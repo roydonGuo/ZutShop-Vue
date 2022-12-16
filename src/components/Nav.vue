@@ -24,18 +24,21 @@ export default {
 .top-nav {
   background-color: #ffffff;
   height: 60px;
-  padding:10px 10%;
+  padding: 10px 10%;
   margin-bottom: 20px;
 }
+
 .col-md-6 {
   float: left;
   width: 50%;
 }
-.nav-pills > li {
+
+.nav-pills>li {
   float: left;
   margin: 0 4px;
 }
-.nav-pills > li > a {
+
+.nav-pills>li>a {
   font-size: 16px;
   border-radius: 6px;
   color: black;
@@ -43,11 +46,13 @@ export default {
   display: block;
   padding: 10px 15px;
 }
-.nav-pills > li > a:hover {
+
+.nav-pills>li>a:hover {
   background: #e2e1e1;
   color: blue;
 }
-.active{
+
+.active {
   border-radius: 6px;
   background: #409EFF
 }
