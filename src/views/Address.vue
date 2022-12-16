@@ -1,5 +1,5 @@
 <template>
-  <div style="padding: 0 10%">
+  <div style="margin: 0 10%">
     <el-table
       :data="addressData"
       border
@@ -16,7 +16,11 @@
       <el-table-column prop="name" label="收货人" width="120"></el-table-column>
       <el-table-column prop="district" label="地址"></el-table-column>
       <el-table-column prop="address" label="详细地址"></el-table-column>
-      <el-table-column prop="phone" label="联系电话" width="120"></el-table-column>
+      <el-table-column
+        prop="phone"
+        label="联系电话"
+        width="120"
+      ></el-table-column>
       <el-table-column align="center" label="默认地址" width="120">
         <template slot-scope="scope">
           <el-switch
@@ -48,7 +52,7 @@
         </template>
       </el-table-column>
     </el-table>
-    <div style="padding: 10px 0; display: inline-block">
+    <div style="margin: 10px 0; display: inline-block">
       <el-pagination
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
@@ -202,7 +206,7 @@
       "
     >
       <el-button type="primary" class="mr-5" @click="handleAdd"
-        >新增 <i class="el-icon-circle-plus-outline"></i>
+        >新增收货地址 <i class="el-icon-circle-plus-outline"></i>
       </el-button>
       <el-popconfirm
         class="mr-5"
@@ -289,6 +293,9 @@ export default {
     addressChoose(value) {
       this.form.district =
         CodeToText[value[0]] + CodeToText[value[1]] + CodeToText[value[2]];
+      this.form.province = value[0];
+      this.form.city = value[1];
+      this.form.area = value[2];
       // this.selectedOptions.push(CodeToText[value[0]] , CodeToText[value[1]] , CodeToText[value[2]]);
       console.log(this.form.district);
     },

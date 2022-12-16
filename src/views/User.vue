@@ -45,6 +45,7 @@
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="save">更 新 信 息</el-button>
+        <el-button type="warning" @click="toChangePwd">去 修改 密码</el-button>
       </el-form-item>
     </el-form>
   </el-card>
@@ -103,6 +104,10 @@ export default {
         }
       });
     },
+    toChangePwd() {
+      this.$router.push("/password");
+    },
+
     handleAvatarSuccess(res) {
       console.log(res);
       if (res.code === 200) {

@@ -1,10 +1,9 @@
 <template>
   <div>
-    <Header :user="user" :isLogin="isLogin"></Header>
+    <Header :user="user" :orderNum="orderNum" :isLogin="isLogin"></Header>
     <el-main style="padding: 0">
       <Nav></Nav>
       <router-view />
-      
     </el-main>
     <Footer></Footer>
   </div>
@@ -22,6 +21,7 @@ export default {
     return {
       user: {},
       isLogin: false,
+      orderNum: 0,
     };
   },
   created() {
@@ -34,8 +34,10 @@ export default {
         : null;
       if (this.user) {
         this.isLogin = true;
-        
       }
+      this.orderNum = localStorage.getItem("_oNum")
+        ? Number(localStorage.getItem("_oNum"))
+        : 0;
     },
   },
 };

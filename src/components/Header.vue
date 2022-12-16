@@ -12,7 +12,7 @@
         <li>
           <el-dropdown>
             <a href="/orders"
-              ><el-badge :value="2" class="item" type="primary">
+              ><el-badge :value="orderNum" class="item" type="primary">
                 <i class="el-icon-s-order"></i>
                 订单
               </el-badge></a
@@ -99,13 +99,16 @@ export default {
   props: {
     user: Object,
     isLogin: Boolean,
+    orderNum: Number
   },
   data() {
     return {
       goodName: "",
+      // orderNum: 0,
     };
   },
-  created() {},
+  created() {
+  },
   methods: {
     searchGood() {},
     logout() {
@@ -121,6 +124,8 @@ export default {
             if (res.code === 200) {
               localStorage.removeItem("userInfo");
               localStorage.removeItem("_t");
+              localStorage.removeItem("toOrderInfo");
+              localStorage.removeItem("_oNum");
               // this.$router.push("/");
               this.$router.push("/", true);
               window.location.reload();
@@ -133,12 +138,6 @@ export default {
         .catch(() => {
           this.$message.info("已取消");
         });
-
-      // console.log("logout");
-      // localStorage.removeItem("userInfo");
-      // localStorage.removeItem("_t");
-      // window.location.reload()
-      // this.$message.success("退出成功")
     },
   },
 };

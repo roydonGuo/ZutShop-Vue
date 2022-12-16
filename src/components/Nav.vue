@@ -5,7 +5,7 @@
         <li class="active">
           <a href="/"><span class="el-icon-s-home"></span></a>
         </li>
-        <li><a href="#">推荐</a></li>
+        <li><a href="/goods">推荐</a></li>
         <li><a href="#">秒杀</a></li>
         <li><a href="#">优惠券</a></li>
         <li><a href="#">学子VIP</a></li>
