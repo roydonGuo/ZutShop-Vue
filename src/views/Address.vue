@@ -2,15 +2,15 @@
   <div style="margin: 0 10%">
     <el-table :data="addressData" border stripe :header-cell-class-name="headerBg"
       @selection-change="handleSelectionChange">
-      <el-table-column type="selection" width="35"></el-table-column>
-      <el-table-column label="地址类型" width="80"><template slot-scope="scope">
+      <el-table-column type="selection" width="50" align="center"></el-table-column>
+      <el-table-column label="地址类型" width="80" align="center"><template slot-scope="scope">
           <el-tag>{{ scope.row.tag }}</el-tag>
         </template></el-table-column>
-      <el-table-column prop="name" label="收货人" width="120"></el-table-column>
-      <el-table-column prop="district" label="地址"></el-table-column>
-      <el-table-column prop="address" label="详细地址"></el-table-column>
-      <el-table-column prop="phone" label="联系电话" width="120"></el-table-column>
-      <el-table-column align="center" label="默认地址" width="120">
+      <el-table-column prop="name" label="收货人" width="120" align="center"></el-table-column>
+      <el-table-column prop="district" label="地址" align="center"></el-table-column>
+      <el-table-column prop="address" label="详细地址" align="center"></el-table-column>
+      <el-table-column prop="phone" label="联系电话" width="120" align="center"></el-table-column>
+      <el-table-column align="center" label="默认地址" width="120" >
         <template slot-scope="scope">
           <el-switch v-model="scope.row.isDefault" :active-value="1" :inactive-value="0"
             @change="changeDefault(scope.row)" />

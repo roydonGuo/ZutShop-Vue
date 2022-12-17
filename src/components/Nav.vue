@@ -30,7 +30,7 @@ export default {
 
 .col-md-6 {
   float: left;
-  width: 50%;
+  /* width: 50%; */
 }
 
 .nav-pills>li {

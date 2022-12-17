@@ -13,7 +13,7 @@
           <el-dropdown>
             <a href="/orders"><el-badge :value="orderNum" class="item" type="primary">
                 <i class="el-icon-s-order"></i>
-                订单
+                订单<i class="el-icon-arrow-down el-icon--right"></i>
               </el-badge></a>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item><router-link to="#"><i class="el-icon-loading"></i>待付款</router-link></el-dropdown-item>
@@ -28,7 +28,7 @@
       </ul>
     </div>
     <!-- search -->
-    <el-input style="width: 400px" placeholder="请输入商品名称" suffix-icon="el-icon-goods" v-model="goodName"></el-input>
+    <el-input style="width: 300px" placeholder="请输入商品名称" suffix-icon="el-icon-goods" v-model="goodName"></el-input>
     <el-button type="primary" icon="el-icon-search" @click="searchGood">搜索</el-button>
     <!-- user head -->
     <div id="user" class="user" v-if="!isLogin"><a href="/login">登录</a></div>

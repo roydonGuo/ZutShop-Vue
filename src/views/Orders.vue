@@ -16,26 +16,27 @@
           <el-table :data="o.orderItemList" row-key="id"
             :tree-props="{ children: 'children', hasChildren: 'hasChildren' }" default-expand-all
             :summary-method="getTotalPrice" show-summary stripe border>
-            <el-table-column label="" width="180">
+            <el-table-column label="" width="120" align="center">
               <template slot-scope="scope">
                 <img style="width: 100%; height: 100%" :src="scope.row.image" alt="图片加载失败" />
               </template>
             </el-table-column>
-            <el-table-column label="商品" prop="title"></el-table-column>
-            <el-table-column label="单价" width="100" prop="price">
+            <el-table-column label="商品" align="center" prop="title"></el-table-column>
+            <el-table-column label="单价" width="100" align="center" prop="price">
               <!-- <template slot-scope="scope">
                 <strong>{{ "￥" + scope.row.price }}</strong></template
               > -->
             </el-table-column>
-            <el-table-column label="数量" width="50" prop="num"></el-table-column>
-            <el-table-column label="小计" width="150"><template slot-scope="scope">
-                <strong>{{
-                    "￥" + scope.row.price * scope.row.num
-                }}</strong></template></el-table-column>
-            <el-table-column label="售后" width="100">
+            <el-table-column label="数量" width="50" align="center" prop="num"></el-table-column>
+            <el-table-column label="小计" width="150" align="center">
+              <template slot-scope="scope">
+                <strong>{{ "￥" + scope.row.price * scope.row.num }}</strong>
+              </template>
+            </el-table-column>
+            <el-table-column label="售后" width="100" align="center" >
               <a href="#"><el-button size="mini" type="success" round>申请售后</el-button></a>
             </el-table-column>
-            <el-table-column label="状态" width="100">
+            <el-table-column label="状态" width="100" align="center" >
               <div>已发货</div>
             </el-table-column>
 

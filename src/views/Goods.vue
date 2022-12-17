@@ -94,6 +94,17 @@ export default {
   margin: 0 1% 1%;
 }
 
+@media (max-width: 992px) {
+  .good-item {
+    width: 46%;
+  }
+}
+@media (max-width: 500px) {
+  .good-item {
+    width: 100%;
+  }
+}
+
 .good-item:hover {
   box-shadow: 0px 0px 8px #888888;
 }
