@@ -27,7 +27,7 @@
     <div>
       <el-popconfirm class="ml-5" confirm-button-text="确定" cancel-button-text="我再想想" icon="el-icon-info"
         icon-color="red" title="您确定删除吗？" @confirm="removeGood">
-        <el-button type="info" style="mini" circle slot="reference" icon="el-icon-delete">
+        <el-button type="info" size="mini" circle slot="reference" icon="el-icon-delete">
         </el-button>
       </el-popconfirm>
       <!-- <el-button type="info" icon="el-icon-delete" circle @click="removeGood"></el-button> -->

@@ -11,9 +11,16 @@
       <span class="total-price">￥{{ amt.toFixed(2) }}</span>
     </div>
     <!-- 结算按钮 -->
-    <button type="button" class="btn-settle">
-      结算({{ total }})
-    </button>
+    <router-link to="/purchase" v-if="total ==0">
+      <button type="button" class="btn-settle" style="display:none" @click="purchase">
+        结算({{ total }})
+      </button>
+    </router-link>
+    <router-link to="/purchase" v-else>
+      <button type="button" class="btn-settle" @click="purchase">
+        结算({{ total }})
+      </button>
+    </router-link>
   </div>
 </template>
 
@@ -32,11 +39,23 @@ export default {
       type: Number,
       default: 0,
     },
+    goodsSelected: {
+      type: Array,
+      default: []
+    }
   },
-  mounted(){
+  created() {
+
+  },
+  mounted() {
 
   },
   methods: {
+    //点击结算，去购买
+    purchase() {
+      console.log(this.goodsSelected)
+
+    },
     selectAll(e) {
       this.$emit("isAll", e.target.checked);
     },
@@ -70,14 +89,14 @@ export default {
 }
 
 .btn-settle {
-  height: 80%;
+  height: 40px;
   color: white;
   min-width: 100px;
   border-radius: 25px;
   border: 0 !important;
   text-align: center;
   background: #409EFF;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .btn-settle:hover {

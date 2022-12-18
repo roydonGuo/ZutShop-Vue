@@ -15,7 +15,7 @@ request.interceptors.request.use(config => {
   let user = localStorage.getItem("userInfo") ? JSON.parse(localStorage.getItem("userInfo")) : null
   let token = localStorage.getItem("_t") ? localStorage.getItem("_t") : null
   if (user != null) {
-    // console.log(token);
+    console.log(token);
     config.headers['token'] = token; // 设置请求头
   }
   return config
@@ -37,11 +37,17 @@ request.interceptors.response.use(
       res = res ? JSON.parse(res) : res
     }
     // 权限验证不通过给出提示
-    if (res.code === '401') {
+    if (res.code === 401) {
       ElementUI.Message({
         message: res.msg,
         type: 'error'
       });
+      localStorage.removeItem("userInfo");
+      localStorage.removeItem("_t");
+      localStorage.removeItem("toOrderInfo");
+      localStorage.removeItem("_oNum");
+      // window.location.reload();
+      this.$router.replace("/")
     }
     return res;
   },

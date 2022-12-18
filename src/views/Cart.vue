@@ -2,7 +2,8 @@
   <div style="margin: 0 20%;">
 
     <h2><i class="el-icon-shopping-cart-full"> </i>购物车</h2>
-    <Operate :isFull="operateState" @isAll="allSelect" :amt="amt" :total="total"></Operate>
+    <Operate :isFull="operateState" @isAll="allSelect" :amt="amt" :total="total" :goodsSelected="goodsSelected">
+    </Operate>
     <div class="box-card clearfix" style="padding: 20px">
 
       <Good v-for="c in cartData" :key="c.cid" :cid="c.cid" :goods_num="c.num" :goods_image="c.goods.image"
@@ -40,7 +41,7 @@ export default {
           return true;
         }
       });
-      console.log(this.cartData);
+      // console.log(this.cartData);
     })
   },
   computed: {
@@ -55,6 +56,12 @@ export default {
           (total, item) => (total += item.goods.price * item.num),
           0
         );
+    },
+    //哪些商品被勾选了，是数组[100021,100025,...]
+    goodsSelected() {
+      return this.cartData
+        .filter((item) => item.state)
+
     },
     total() {
       return this.cartData
@@ -75,7 +82,7 @@ export default {
             c.state = false;
           })
           this.cartData = res.data;
-          console.log(this.cartData);
+          // console.log(this.cartData);
         } else {
           this.$message.error("获取购物车失败")
         }
@@ -83,7 +90,7 @@ export default {
     },
     getNowState(obj) {
       // obj 就是子组件传来的新状态 {id: 1, state: false}...
-      console.log(obj);
+      // console.log(obj);
       this.cartData.some((item) => {
         if (item.cid == obj.cid) {
           item.state = obj.state;

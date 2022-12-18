@@ -13,22 +13,23 @@
     </div>
     <!-- 商品内容介绍 -->
     <div class="good-detail">
-      <h1 style="margin:10px">戴尔Dell 燃700R1605银色</h1>
-      <p style="padding:0 10px"><small>仅上海，广州，沈阳仓有货！预购从速！</small></p>
+      <h2 style="margin:10px;height: 50px;">{{ goodsData.title }}</h2>
+      <!-- <p style="padding:0 10px;height: 20px;line-height: 20px;"><small></small></p> -->
       <div class="price-bar" style="padding:10px 2%">
-        <small>学员售价：</small><strong style="color:red">¥ 4899.00</strong>
-        <div><small>*退货补运费 *7天无理由退货 *24小时快速退款 </small></div>
+        <small style="font-size:18px">学员售价：</small><strong style="color:red">¥ {{ goodsData.price }}</strong>
+        <div><small style="font-size:14px">*退货补运费 *7天无理由退货 *24小时快速退款 </small></div>
       </div>
       <div style="padding:10px 10%;line-height: 2;">
         <Counter :count="goods_num" :cid="gid"></Counter>
-        <p><small><b>学子商城</b>发货并提供售后服务,今日下单,明日送达</small></p>
+        <!-- <span>余量：{{goodsData.num}}</span> -->
+        <p><strong>{{ goodsData.sellPoint }}</strong></p>
       </div>
       <div class="btn-primary">
         <el-button type="primary" style="width:100%;font-size: 18px;font-weight: 600;">立即购买</el-button>
       </div>
       <div class="good-btn">
         <el-button icon="el-icon-star-off">加入收藏</el-button>
-        <el-button icon="el-icon-shopping-cart-full">加购物车</el-button>
+        <el-button icon="el-icon-shopping-cart-full" @click="addCart">加购物车</el-button>
       </div>
 
     </div>
@@ -87,7 +88,6 @@
       </div>
     </div>
 
-
   </div>
 </template>
 
@@ -107,7 +107,8 @@ export default {
         { index: 2, url: "https://img1.imgtp.com/2022/12/17/ypDhxKRf.png" },
         { index: 3, url: "https://img1.imgtp.com/2022/12/17/nVtUHZgE.png" },
         { index: 4, url: "https://img1.imgtp.com/2022/12/17/Y5FRtzgY.png" },
-      ]
+      ],
+      goodsData: {}
     };
   },
 
@@ -116,8 +117,40 @@ export default {
     bus.$on("share", (obj) => {
       this.goods_num = obj.num
     })
+    // console.log(this.$route.params.gid);
+    this.gid = Number(this.$route.params.gid)
+    this.getGoodByGid()
   },
   methods: {
+    //加入购物车功能
+    addCart() {
+      const cart = {};
+      cart.gid = this.gid;
+      cart.num = this.goods_num;
+      console.log(cart);
+      this.request.post("/cart/add", cart).then((res) => {
+        if (res.code === 200) {
+          // console.log(res);
+          this.$message.success("添加成功");
+        } else {
+          this.$message.error("添加失败");
+        }
+      });
+
+    },
+    getGoodByGid() {
+      this.request.get("/goods/" + this.gid).then((res) => {
+        if (res.data) {
+          // this.$message.success("删除成功");
+          // this.load();
+          // console.log(res.data);
+          this.goodsData = res.data;
+          this.bigImage = this.goodsData.image
+        } else {
+          // this.$message.error("删除失败");
+        }
+      });
+    },
     showSmallImage(index) {
       // console.log(index);
       this.bigImage = this.imageList[index].url
@@ -131,6 +164,16 @@ export default {
 </script>
 
 <style scoped>
+h2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  /* overflow: hidden; */
+  /* autoprefixer: ignore next */
+  -webkit-box-orient: vertical;
+}
+
 .panel {
   border-radius: 10px;
   margin-bottom: 20px;
@@ -171,8 +214,10 @@ export default {
 .row {
   margin: 20px 0;
 }
-.row>p{
-padding: 0 50px;}
+
+.row>p {
+  padding: 0 50px;
+}
 
 .price-bar {
   background: #ddeffb;

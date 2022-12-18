@@ -3,18 +3,23 @@
     <div class="content clearfix" style="margin: 0 10%; box-sizing: border-box">
       <!-- 待渲染商品数据 -->
       <div class="good-item" v-for="g in goodsData" :key="g.gid">
-        <div class="img-cover">
-          <img :src="g.image" alt="获取图片源失败" />
-        </div>
+        <router-link :to="'/product/' + g.gid">
+          <div class="img-cover">
+            <img :src="g.image" alt="获取图片源失败" />
+          </div>
+        </router-link>
         <h4>{{ "￥" + g.price }}</h4>
         <div class="good-detail">
-          <a href="/product">
+          <router-link :to="'/product/' + g.gid">
+            <h4>{{ g.title }}</h4>
+          </router-link>
+          <!-- <a href="/product">
             {{ g.title }}
-          </a>
+          </a> -->
         </div>
         <div class="good-btn">
           <el-button size="mini" icon="el-icon-star-off">加入收藏</el-button>
-          <el-button size="mini" icon="el-icon-shopping-cart-full">加购物车</el-button>
+          <el-button size="mini" icon="el-icon-shopping-cart-full" @click="addCart(g.gid)">加购物车</el-button>
         </div>
       </div>
     </div>
@@ -29,8 +34,11 @@
 </template>
 
 <script>
+
 export default {
   name: "Goods",
+  props: {
+  },
   data() {
     return {
       pageNum: 1,
@@ -43,7 +51,8 @@ export default {
   created() {
     // this.getGoods();
     // window.location.reload();
-    console.log("1");
+    // console.log("1");
+
   },
   mounted() {
     this.title = localStorage.getItem("goodName")
@@ -52,12 +61,31 @@ export default {
     this.getGoods();
     localStorage.removeItem("goodName");
   },
+  updated() {
+
+    // window.location.reload();
+  },
   // watch: {
   //   title() {
   //     this.getGoods();
   //   },
   // },
   methods: {
+    //加入购物车功能
+    addCart(gid) {
+      console.log(gid);
+      const cart = {};
+      cart.gid = gid;
+      // console.log(cart);
+      this.request.post("/cart/add", cart).then((res) => {
+        if (res.code === 200) {
+          // console.log(res);
+          this.$message.success("添加成功");
+        } else {
+          this.$message.error("添加失败");
+        }
+      });
+    },
     getGoods() {
       this.request
         .get("/goods/search", {
@@ -69,7 +97,7 @@ export default {
         })
         .then((res) => {
           this.goodsData = res.data.records;
-          console.log(this.goodsData);
+          // console.log(this.goodsData);
           this.total = Number(res.data.total);
         });
     },
@@ -83,6 +111,16 @@ export default {
 </script>
 
 <style scoped>
+h4 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  /* overflow: hidden; */
+  /* autoprefixer: ignore next */
+  -webkit-box-orient: vertical;
+}
+
 .good-item {
   float: left;
   position: relative;
@@ -99,6 +137,7 @@ export default {
     width: 46%;
   }
 }
+
 @media (max-width: 500px) {
   .good-item {
     width: 100%;

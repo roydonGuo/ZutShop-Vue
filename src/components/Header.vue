@@ -29,7 +29,9 @@
     </div>
     <!-- search -->
     <el-input style="width: 300px" placeholder="请输入商品名称" suffix-icon="el-icon-goods" v-model="goodName"></el-input>
-    <el-button type="primary" icon="el-icon-search" @click="searchGood">搜索</el-button>
+    <router-link to="/goods">
+      <el-button type="primary" icon="el-icon-search" @click="searchGood">搜索</el-button>
+    </router-link>
     <!-- user head -->
     <div id="user" class="user" v-if="!isLogin"><a href="/login">登录</a></div>
     <div id="user" class="user" v-else>
@@ -38,13 +40,17 @@
         <img v-else src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" alt="无图片"
           style="border-radius: 50%" />
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item><router-link to="/user"><i class="el-icon-user"></i>个人信息</router-link></el-dropdown-item>
-          <el-dropdown-item><router-link to="/password"><i
-                class="el-icon-lock"></i>修改密码</router-link></el-dropdown-item>
-          <el-dropdown-item><router-link to="/address"><i
-                class="el-icon-truck"></i>收货管理</router-link></el-dropdown-item>
-          <el-dropdown-item style="color: red"><span class="el-icon-coordinate"></span><span
-              @click="logout">退出登录</span></el-dropdown-item>
+          <el-dropdown-item>
+            <router-link to="/user"><i class="el-icon-user"></i>个人信息</router-link>
+          </el-dropdown-item>
+          <el-dropdown-item>
+            <router-link to="/password"><i class="el-icon-lock"></i>修改密码</router-link>
+          </el-dropdown-item>
+          <el-dropdown-item>
+            <router-link to="/address"><i class="el-icon-truck"></i>收货管理</router-link>
+          </el-dropdown-item>
+          <el-dropdown-item style="color: red"><span class="el-icon-coordinate"></span>
+            <span @click="logout">退出登录</span></el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </div>
@@ -69,9 +75,10 @@ export default {
   created() { },
   methods: {
     searchGood() {
-      window.location.reload();
+      // window.location.reload();
       localStorage.setItem("goodName", String(this.goodName));
-      this.$router.push("/goods");
+      // window.location.reload();
+      // this.$router.push("/goods");
       // 
     },
     logout() {

@@ -10,7 +10,7 @@
       <el-table-column prop="district" label="地址" align="center"></el-table-column>
       <el-table-column prop="address" label="详细地址" align="center"></el-table-column>
       <el-table-column prop="phone" label="联系电话" width="120" align="center"></el-table-column>
-      <el-table-column align="center" label="默认地址" width="120" >
+      <el-table-column align="center" label="默认地址" width="120">
         <template slot-scope="scope">
           <el-switch v-model="scope.row.isDefault" :active-value="1" :inactive-value="0"
             @change="changeDefault(scope.row)" />
@@ -18,10 +18,11 @@
       </el-table-column>
       <el-table-column label="操作" width="250" align="center">
         <template slot-scope="scope">
-          <el-button type="success" @click="handleEdit(scope.row)">编辑 <i class="el-icon-edit"></i></el-button>
+          <el-button type="success" size="mini" @click="handleEdit(scope.row)">编辑 <i
+              class="el-icon-edit"></i></el-button>
           <el-popconfirm class="ml-5" confirm-button-text="确定" cancel-button-text="我再想想" icon="el-icon-info"
             icon-color="red" title="您确定删除吗？" @confirm="delRow(scope.row.aid)">
-            <el-button type="danger" slot="reference">删除 <i class="el-icon-remove-outline"></i>
+            <el-button type="danger" size="mini" slot="reference">删除 <i class="el-icon-remove-outline"></i>
             </el-button>
           </el-popconfirm>
         </template>
@@ -56,7 +57,7 @@
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button @click="dialogFormVisible = false">取 消</el-button>
+        <el-button @click="dialogFormVisible = false;">取 消</el-button>
         <el-button type="primary" @click="update">确 定</el-button>
       </div>
     </el-dialog>
@@ -130,11 +131,12 @@
         display: inline-block;
         float: right;
       ">
-      <el-button type="primary" class="mr-5" @click="handleAdd">新增收货地址 <i class="el-icon-circle-plus-outline"></i>
+      <el-button type="primary" size="mini" class="mr-5" @click="handleAdd">新增收货地址 <i
+          class="el-icon-circle-plus-outline"></i>
       </el-button>
       <el-popconfirm class="mr-5" confirm-button-text="确定" cancel-button-text="我再想想" icon="el-icon-info"
         icon-color="red" title="您确定批量删除这些数据吗？" @confirm="delBatch">
-        <el-button type="danger" slot="reference">批量删除 <i class="el-icon-remove-outline"></i></el-button>
+        <el-button type="danger" size="mini" slot="reference">批量删除 <i class="el-icon-remove-outline"></i></el-button>
       </el-popconfirm>
     </div>
   </div>
@@ -206,12 +208,11 @@ export default {
   },
   methods: {
     addressChoose(value) {
-      this.form.district =
-        CodeToText[value[0]] + CodeToText[value[1]] + CodeToText[value[2]];
+      this.form.district = CodeToText[value[0]] + CodeToText[value[1]] + CodeToText[value[2]];
       this.form.province = value[0];
       this.form.city = value[1];
       this.form.area = value[2];
-      // this.selectedOptions.push(CodeToText[value[0]] , CodeToText[value[1]] , CodeToText[value[2]]);
+      // this.selectedOptions.push(CodeToText[value[0]], CodeToText[value[1]], CodeToText[value[2]]);
       console.log(this.form.district);
     },
     load() {
@@ -256,6 +257,7 @@ export default {
     },
     handleAdd() {
       this.addDialogFormVisible = true;
+      this.selectedOptions = [];
       this.form = {};
     },
     update() {
@@ -303,6 +305,8 @@ export default {
     handleEdit(row) {
       this.form = { ...row };
       this.dialogFormVisible = true;
+      this.selectedOptions = [];
+      this.selectedOptions.push(this.form.province, this.form.city, this.form.area);
     },
     delRow(id) {
       this.request.delete("/address/" + id).then((res) => {

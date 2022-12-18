@@ -35,13 +35,19 @@ export default {
         : null;
       if (this.user) {
         this.isLogin = true;
+        // console.log(this.user);
       }
       this.orderNum = localStorage.getItem("_oNum")
         ? Number(localStorage.getItem("_oNum"))
         : 0;
     },
-
   },
+  beforeUpdate() {
+    // localStorage.removeItem("userInfo");
+    // localStorage.removeItem("_t");
+    // localStorage.removeItem("toOrderInfo");
+    // localStorage.removeItem("_oNum");
+  }
 };
 </script>
 
