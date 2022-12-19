@@ -7,7 +7,7 @@
       </div>
       <div class="small-img-list">
         <div class="img-small" v-for="i in imageList" :key="i.index">
-          <img :src="i.url" class="img-responsive" @click="showSmallImage(i.index)">
+          <img :src="i.url" class="img-responsive" @mouseover="showSmallImage(i.index)">
         </div>
       </div>
     </div>

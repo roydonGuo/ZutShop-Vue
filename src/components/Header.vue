@@ -7,7 +7,8 @@
     <div class="nav">
       <ul>
         <li>
-          <a href="#"><i class="el-icon-star-off"></i>收藏</a>
+
+          <a href="#" @click="toFavorites"><i class="el-icon-star-off"></i>收藏</a>
         </li>
         <li>
           <el-dropdown>
@@ -29,9 +30,9 @@
     </div>
     <!-- search -->
     <el-input style="width: 300px" placeholder="请输入商品名称" suffix-icon="el-icon-goods" v-model="goodName"></el-input>
-    <router-link to="/goods">
-      <el-button type="primary" icon="el-icon-search" @click="searchGood">搜索</el-button>
-    </router-link>
+
+    <el-button type="primary" icon="el-icon-search" @click="searchGood">搜索</el-button>
+
     <!-- user head -->
     <div id="user" class="user" v-if="!isLogin"><a href="/login">登录</a></div>
     <div id="user" class="user" v-else>
@@ -64,22 +65,22 @@ export default {
     user: Object,
     isLogin: Boolean,
     orderNum: Number,
+
   },
   data() {
     return {
       goodName: "",
-      // title: "",
-      // orderNum: 0,
     };
   },
   created() { },
   methods: {
+    toFavorites() {
+      this.$router.push({ path: 'goods', query: { type: 'favorites' } })
+      window.location.reload(); 
+    },
     searchGood() {
-      // window.location.reload();
-      localStorage.setItem("goodName", String(this.goodName));
-      // window.location.reload();
-      // this.$router.push("/goods");
-      // 
+      this.$router.push({ path: 'goods', query: { title: this.goodName } })
+      window.location.reload();
     },
     logout() {
       this.$confirm("确定要退出登录?", "退出登录", {

@@ -11,16 +11,14 @@
       <span class="total-price">￥{{ amt.toFixed(2) }}</span>
     </div>
     <!-- 结算按钮 -->
-    <router-link to="/purchase" v-if="total ==0">
-      <button type="button" class="btn-settle" style="display:none" @click="purchase">
-        结算({{ total }})
-      </button>
-    </router-link>
-    <router-link to="/purchase" v-else>
-      <button type="button" class="btn-settle" @click="purchase">
-        结算({{ total }})
-      </button>
-    </router-link>
+    <button v-if="total == 0">
+
+    </button>
+
+    <button type="button" v-else class="btn-settle" @click="purchase">
+      结算({{ total }})
+    </button>
+
   </div>
 </template>
 
@@ -52,9 +50,10 @@ export default {
   },
   methods: {
     //点击结算，去购买
-    purchase() {
-      console.log(this.goodsSelected)
-
+    async purchase() {
+      // console.log(this.goodsSelected)
+      // localStorage.setItem("createOrder",JSON.stringify(this.goodsSelected))
+      this.$router.push({ path: '/purchase', query: { goodsSelected: this.goodsSelected } });
     },
     selectAll(e) {
       this.$emit("isAll", e.target.checked);

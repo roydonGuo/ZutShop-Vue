@@ -49,17 +49,27 @@ export default {
     };
   },
   created() {
+    if (this.$route.query.type === 'favorites') {
+      this.getFavoriteGoods()
+    }
+    else if (this.$route.query.title) {
+      this.title = this.$route.query.title
+      console.log(this.title);
+      this.getGoods()
+    } else {
+      this.getGoods();
+    }
     // this.getGoods();
     // window.location.reload();
     // console.log("1");
-
   },
   mounted() {
-    this.title = localStorage.getItem("goodName")
-      ? localStorage.getItem("goodName")
-      : "";
-    this.getGoods();
-    localStorage.removeItem("goodName");
+    // this.title = localStorage.getItem("goodName")
+    //   ? localStorage.getItem("goodName")
+    //   : "";
+    // this.getGoods();
+
+    // localStorage.removeItem("goodName");
   },
   updated() {
 
@@ -76,7 +86,8 @@ export default {
       console.log(gid);
       const cart = {};
       cart.gid = gid;
-      // console.log(cart);
+      cart.num = 1;
+      console.log(cart);
       this.request.post("/cart/add", cart).then((res) => {
         if (res.code === 200) {
           // console.log(res);
@@ -86,13 +97,29 @@ export default {
         }
       });
     },
+    getFavoriteGoods() {
+      this.request
+        .get("/favorites/list", {
+          params: {
+            pageNum: this.pageNum,
+            pageSize: this.pageSize,
+            // title: this.title,
+          },
+        })
+        .then((res) => {
+          // alert(res.data.records)
+          this.goodsData = res.data.records;
+          // console.log(this.goodsData);
+          this.total = Number(res.data.total);
+        });
+    },
     getGoods() {
       this.request
         .get("/goods/search", {
           params: {
             pageNum: this.pageNum,
             pageSize: this.pageSize,
-            title: this.title,
+            title: this.title
           },
         })
         .then((res) => {
@@ -103,7 +130,11 @@ export default {
     },
     handleCurrentChange(pageNum) {
       this.pageNum = pageNum;
-      this.getGoods();
+      if (this.$route.query.type === 'favorites') {
+        this.getFavoriteGoods()
+      }
+      else { this.getGoods(); }
+
     },
   },
   updated() { },

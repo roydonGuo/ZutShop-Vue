@@ -61,7 +61,6 @@ export default {
     goodsSelected() {
       return this.cartData
         .filter((item) => item.state)
-
     },
     total() {
       return this.cartData
@@ -100,7 +99,7 @@ export default {
       });
     },
     getNowCart(obj) {
-      console.log(obj);
+      // console.log(obj);
       //遍历剔除被删除的数据
       this.getUserCart();
       // this.cartData.filter((item) => {
@@ -108,10 +107,11 @@ export default {
       // });
     },
     allSelect(e) {
-      console.log(e);
+      // console.log(e);
       this.cartData.forEach((item) => {
         item.state = e;
-      }); console.log(this.cartData);
+      }); 
+      // console.log(this.cartData);
     },
   },
   updated() {
