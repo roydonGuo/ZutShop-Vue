@@ -7,7 +7,7 @@
           <span>订单号：</span><strong>{{ o.oid }}</strong>
           <span>下单时间：</span><strong>{{ o.orderTime }}</strong>
           <span>收货人：</span><strong>{{ o.name }}</strong>
-          <strong style="float: right">{{ "￥" + o.totalPrice }}</strong><span style="float: right">订单总金额：</span>
+          <!-- <strong style="float: right">{{ "￥" + o.totalPrice }}</strong><span style="float: right">订单总金额：</span> -->
           <!-- <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button> -->
         </div>
         <div>

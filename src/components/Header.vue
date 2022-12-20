@@ -76,11 +76,13 @@ export default {
   methods: {
     toFavorites() {
       this.$router.push({ path: 'goods', query: { type: 'favorites' } })
-      window.location.reload(); 
+      window.location.reload();
     },
     searchGood() {
       this.$router.push({ path: 'goods', query: { title: this.goodName } })
-      window.location.reload();
+      this.$nextTick(function () {
+        window.location.reload();
+      })
     },
     logout() {
       this.$confirm("确定要退出登录?", "退出登录", {

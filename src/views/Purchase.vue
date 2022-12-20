@@ -7,11 +7,12 @@
       <el-step title="付款成功"></el-step>
     </el-steps>
 
-    <CreateOrder v-if="active === 0" :active="active" :goods="goodsSelected"></CreateOrder>
+    <CreateOrder v-if="active === 0" :active="active" :goods="goodsSelected" @addressSelected="getOrderCreate">
+    </CreateOrder>
     <Pay v-if="active === 1" :active="active"></Pay>
     <PaySuccess v-if="active === 2" :active="active"></PaySuccess>
 
-    <div style="text-align:center;margin:20px">
+    <div style="text-align:center;padding:20px 10%">
 
       <el-button type="primary" v-if="active === 0" @click="next">确认订单</el-button>
       <el-button type="primary" v-else-if="active === 1" @click="next">确认支付</el-button>
@@ -31,7 +32,8 @@ export default {
   data() {
     return {
       active: 0,
-      goodsSelected: []
+      goodsSelected: [],
+      orderCreate: {}
     }
   },
   created() {
@@ -45,8 +47,25 @@ export default {
   //   }
   // },
   methods: {
+    getOrderCreate(val) {
+      // console.log(val);
+      this.orderCreate = val;
+      console.log(this.orderCreate);
+    },
+
     next() {
-      if (this.active++ > 2) {
+      this.active += 1;
+      if (this.active == 1) {
+        //创建订单
+        this.request.post("/order/create", this.orderCreate).then((res) => {
+          if (res.code === 200) {
+            this.$message.success("请确保安全支付环境");
+          } else {
+            this.$message.error(res.msg)
+          }
+        })
+      }
+      if (this.active > 2) {
         this.active = 0
       }
     }

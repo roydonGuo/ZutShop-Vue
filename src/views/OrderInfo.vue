@@ -10,7 +10,7 @@
           <div slot="header" class="clearfix orderInfo">
             <span>订单号：</span><strong>{{ orderItem.oid }}</strong>
             <span>下单时间：</span><strong>{{ orderItem.createdTime }}</strong>
-            <span>收货人：</span><strong>{{ orderItem.oid }}</strong>
+            <span>收货人：</span><strong>{{ order.name }}</strong>
           </div>
           <div>
             <table style="width: 100%; border-radius: 10px; border: 2px solid black">
@@ -25,8 +25,8 @@
               </thead>
               <tbody>
                 <tr>
-                  <td style="width: 15%; padding: 10px">
-                    <img style="border-radius: 10px" :src="orderItem.image" />
+                  <td style="width: 15%; padding: 10px;">
+                    <img style="border-radius: 10px;width:150px;height:120px" :src="orderItem.image" />
                   </td>
                   <td style="width: 50%">
                     <a href="#">
@@ -40,7 +40,7 @@
                     <h3>{{ orderItem.num }}</h3>
                   </td>
                   <td>
-                    <h3>{{ "￥" + orderItem.price * orderItem.num }}</h3>
+                    <h3 style="color:red;font-weight: 900;">{{ "￥" + orderItem.price * orderItem.num }}</h3>
                   </td>
                 </tr>
               </tbody>
@@ -96,8 +96,8 @@
     <div style="margin: 0 0 20px">
       <h2>收货详情</h2>
       <div slot="header" class="box-card clearfix orderInfo" style="padding: 20px">
-        <span>收货人姓名：</span><strong>roydon</strong> <span>联系电话：</span><strong>1820***8745</strong>
-        <span>邮政编码：</span><strong>476600</strong> <span>收货地址：</span><strong>{{ order.address }}</strong>
+        <span>收货人姓名：</span><strong>{{ order.name }}</strong> <span>联系电话：</span><strong>{{ order.phone }}</strong>
+        <span>收货地址：</span><strong>{{ order.address }}</strong>
       </div>
     </div>
     <!--  物流信息 -->

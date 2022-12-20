@@ -38,10 +38,18 @@ export default {
       this.cartData.some((item) => {
         if (item.cid === obj.cid) {
           item.num = obj.num;
+          // console.log(item);
+          this.request.post("/cart/add", item).then((res) => {
+            if (res.code === 200) {
+              // console.log(this.cartData);
+            } else {
+              this.$message.error("获取购物车失败")
+            }
+          });
           return true;
         }
       });
-      // console.log(this.cartData);
+
     })
   },
   computed: {
@@ -110,7 +118,7 @@ export default {
       // console.log(e);
       this.cartData.forEach((item) => {
         item.state = e;
-      }); 
+      });
       // console.log(this.cartData);
     },
   },

@@ -28,6 +28,10 @@ export default {
       type: Number,
     },
   },
+  data(){
+    return{
+    }
+  },
   methods: {
     addCount() {
       var obj = { cid: this.cid, num: this.count + 1 };
