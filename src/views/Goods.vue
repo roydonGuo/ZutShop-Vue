@@ -18,7 +18,7 @@
           </a> -->
         </div>
         <div class="good-btn">
-          <el-button size="mini" icon="el-icon-star-off">加入收藏</el-button>
+          <el-button size="mini" icon="el-icon-star-off"  @click="addFavorites(g.gid)">加入收藏</el-button>
           <el-button size="mini" icon="el-icon-shopping-cart-full" @click="addCart(g.gid)">加购物车</el-button>
         </div>
       </div>
@@ -81,6 +81,16 @@ export default {
   //   },
   // },
   methods: {
+    //添加收藏
+    addFavorites(gid){
+      this.request.post("/favorites/add", gid).then((res) => {
+        if (res.code === 200) {
+          this.$message.success("收藏成功");
+        } else {
+          this.$message.error("收藏失败");
+        }
+      });
+    },
     //加入购物车功能
     addCart(gid) {
       console.log(gid);

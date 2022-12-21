@@ -7,6 +7,7 @@
           <span>订单号：</span><strong>{{ o.oid }}</strong>
           <span>下单时间：</span><strong>{{ o.orderTime }}</strong>
           <span>收货人：</span><strong>{{ o.name }}</strong>
+          <!-- <span>发货状态：</span><strong>{{ o.status }}</strong> -->
           <!-- <strong style="float: right">{{ "￥" + o.totalPrice }}</strong><span style="float: right">订单总金额：</span> -->
           <!-- <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button> -->
         </div>
@@ -30,14 +31,19 @@
             <el-table-column label="数量" width="50" align="center" prop="num"></el-table-column>
             <el-table-column label="小计" width="150" align="center">
               <template slot-scope="scope">
-                <strong>{{ "￥" + scope.row.price * scope.row.num }}</strong>
+                <strong style="color:red">{{ "￥" + scope.row.price * scope.row.num }}</strong>
               </template>
             </el-table-column>
-            <el-table-column label="售后" width="100" align="center" >
+            <el-table-column label="售后" width="100" align="center">
               <a href="#"><el-button size="mini" type="success" round>申请售后</el-button></a>
             </el-table-column>
-            <el-table-column label="状态" width="100" align="center" >
-              <div>已发货</div>
+            <el-table-column label="状态" width="180" align="center">
+
+              <div v-if="o.status==0" style="color:red">未支付</div>
+              <div v-if="o.status==1" style="color:green">已支付</div>
+              <div v-if="o.status==2" style="color:#888">已取消</div>
+              <div v-if="o.status==3" style="color:blue">未发货</div>
+
             </el-table-column>
 
             <el-table-column label="操作" align="center">
@@ -131,7 +137,19 @@ export default {
         },
       });
     },
-    sureReceive(row) { },
+    sureReceive(row) {
+      this.request.post("/orderItem/receive", row).then((res) => {
+        if (res.code === 200) {
+          this.$message.success("商品已签收")
+          window.location.reload()
+        } else {
+          this.$message.error("发生了一点小问题")
+        }
+      })
+      //点击确认收货订单
+      console.log(typeof row);
+
+    },
   },
 };
 </script>

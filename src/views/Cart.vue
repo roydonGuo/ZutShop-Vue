@@ -1,5 +1,5 @@
 <template>
-  <div style="margin: 0 20%;">
+  <div style="margin: 0 10%;">
 
     <h2><i class="el-icon-shopping-cart-full"> </i>购物车</h2>
     <Operate :isFull="operateState" @isAll="allSelect" :amt="amt" :total="total" :goodsSelected="goodsSelected">

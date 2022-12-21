@@ -33,7 +33,8 @@ export default {
     return {
       active: 0,
       goodsSelected: [],
-      orderCreate: {}
+      orderCreate: {},
+      order: {},
     }
   },
   created() {
@@ -59,11 +60,16 @@ export default {
         //创建订单
         this.request.post("/order/create", this.orderCreate).then((res) => {
           if (res.code === 200) {
+            this.order = res.data
             this.$message.success("请确保安全支付环境");
           } else {
             this.$message.error(res.msg)
           }
         })
+      }
+      if (this.active == 2) {
+        //选择支付方式后前往支付,参数描述：{subject：商品名/other；tranceNo：订单号；totalAmount：总价}
+        window.open(`http://localhost:7778/alipay/pay?subject=${this.order.phone}&traceNo=${this.order.oid}&totalAmount=${this.order.price}`)
       }
       if (this.active > 2) {
         this.active = 0

@@ -6,9 +6,11 @@
 
     </div>
     <!-- 支付 -->
-    <div>
+    <div style="text-align:center;margin:20px">
 
-      在线支付
+      <el-radio v-model="radio" label="1">支付宝</el-radio>
+      <el-radio disabled  v-model="radio" label="2">微信</el-radio>
+      <el-radio disabled  v-model="radio" label="3">中国建设银行</el-radio>
     </div>
 
   </div>
@@ -26,7 +28,7 @@ export default {
   },
   data() {
     return {
-
+      radio: "1",
     }
   },
   created() {
