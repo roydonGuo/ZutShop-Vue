@@ -113,11 +113,9 @@ export default {
           params: {
             pageNum: this.pageNum,
             pageSize: this.pageSize,
-            // title: this.title,
           },
         })
         .then((res) => {
-          // alert(res.data.records)
           this.goodsData = res.data.records;
           // console.log(this.goodsData);
           this.total = Number(res.data.total);
@@ -134,7 +132,6 @@ export default {
         })
         .then((res) => {
           this.goodsData = res.data.records;
-          // console.log(this.goodsData);
           this.total = Number(res.data.total);
         });
     },

@@ -23,31 +23,31 @@
         <div class="left">
           <ul>
             <li>
-              <a href="#">电脑办公<span>&gt;</span></a>
+              <a href="#">男装<span>&gt;</span></a>
             </li>
             <li>
-              <a href="#">电脑办公<span>&gt;</span></a>
+              <a href="#">女装<span>&gt;</span></a>
             </li>
             <li>
-              <a href="#">电脑办公<span>&gt;</span></a>
+              <a href="#">数码<span>&gt;</span></a>
             </li>
             <li>
-              <a href="#">电脑办公<span>&gt;</span></a>
+              <a href="#">家装<span>&gt;</span></a>
             </li>
             <li>
-              <a href="#">电脑办公<span>&gt;</span></a>
+              <a href="#">车品<span>&gt;</span></a>
             </li>
             <li>
-              <a href="#">电脑办公<span>&gt;</span></a>
+              <a href="#">食品<span>&gt;</span></a>
             </li>
             <li>
-              <a href="#">电脑办公<span>&gt;</span></a>
+              <a href="#">母婴<span>&gt;</span></a>
             </li>
             <li>
-              <a href="#">电脑办公<span>&gt;</span></a>
+              <a href="#">医药<span>&gt;</span></a>
             </li>
             <li>
-              <a href="#">电脑办公<span>&gt;</span></a>
+              <a href="#">进口<span>&gt;</span></a>
             </li>
           </ul>
         </div>

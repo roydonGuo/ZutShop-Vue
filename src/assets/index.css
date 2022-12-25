@@ -41,6 +41,11 @@ a {
   /* 去除a标签下划线 */
 }
 
+.logo{
+  width: 220px;
+  height: 70px;
+}
+
 /* 清除浮动 */
 .clearfix:before,
 .clearfix:after {

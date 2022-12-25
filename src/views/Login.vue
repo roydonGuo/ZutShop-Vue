@@ -1,9 +1,9 @@
 <template>
   <div>
     <header class="header">
-      <img src="@/assets/zutshoplogo.png" alt="" />
+      <img class="logo" src="@/assets/zhiziLogo.png" alt="" />
       <span class="pull-right">
-        <h3><small>欢迎访问</small><strong>学子商城</strong></h3>
+        <h3><small>欢迎访问</small><strong style="color:#409eff">学子商城</strong></h3>
       </span>
     </header>
     <div class="login-app">

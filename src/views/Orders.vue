@@ -141,7 +141,7 @@ export default {
       this.request.post("/orderItem/receive", row).then((res) => {
         if (res.code === 200) {
           this.$message.success("商品已签收")
-          window.location.reload()
+          this.getOrderList()
         } else {
           this.$message.error("发生了一点小问题")
         }

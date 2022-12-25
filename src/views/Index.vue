@@ -33,6 +33,7 @@ export default {
       this.user = localStorage.getItem("userInfo")
         ? JSON.parse(localStorage.getItem("userInfo"))
         : null;
+        //请求后台拿到用户
       if (this.user) {
         this.isLogin = true;
         // console.log(this.user);

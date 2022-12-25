@@ -8,7 +8,7 @@
         <li><a href="/goods">推荐</a></li>
         <li><a href="#">秒杀</a></li>
         <li><a href="#">优惠券</a></li>
-        <li><a href="#">学子VIP</a></li>
+        <li><a href="#">智子VIP</a></li>
         <li><a href="#">外卖</a></li>
         <li><a href="#">超市</a></li>
       </ul>

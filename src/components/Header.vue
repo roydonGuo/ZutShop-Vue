@@ -1,7 +1,7 @@
 <template>
   <div class="header wrapper">
     <h1 class="logo">
-      <a href="/"><img src="../assets/zutshoplogo.png" alt="" /></a>
+      <a href="/"><img class = "logo" src="../assets/zhiziLogo.png" alt="" /></a>
     </h1>
     <!-- 导航 -->
     <div class="nav">
